@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('admin/planos', 'Admin\PlanoController@index')->name('plano.index');
 Route::get('/', function () {
     return view('welcome');
 });
