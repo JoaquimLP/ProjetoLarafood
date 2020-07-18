@@ -3,7 +3,7 @@
 @section('title', 'Planos')
 
 @section('content_header')
-    <h1>Planos</h1>
+    <h1>Planos <a href="{{route('plano.create')}}" class="btn btn-primary">ADICIONAR</a></h1>
 @stop
 
 @section('content')
