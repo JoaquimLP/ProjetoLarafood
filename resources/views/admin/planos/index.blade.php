@@ -3,13 +3,26 @@
 @section('title', 'Planos')
 
 @section('content_header')
-    <h1>Planos <a href="{{route('plano.create')}}" class="btn btn-primary">ADICIONAR</a></h1>
+    <h1>Planos <a href="{{route('plano.create')}}" class="btn btn-primary"><i class="fas fa-plus-square"></i> ADICIONAR</a></h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{route('adimin.home')}}">Home</a>
+        </li>
+        <li <li class="breadcrumb-item active">
+            <a href="{{route('plano.index')}}">planos</a>
+        </li>
+    </ol>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            #filtros
+           <form action="{{route('plano.search')}}" class="form form-inline" method="post">
+                @csrf
+                <input type="text" class="form-control mr-1" name="filtrar" value="{{$filtros['filtrar'] ?? ''}}" id="filtrar" placeholder="nome do plano...">
+                <button type="submit" class="btn btn-dark">Buscar</button>
+            </form>
+            
         </div>
         <div class="card-body">
             <table class="table table-condensed">
@@ -27,17 +40,22 @@
                                 {{$plano->nome}}
                             </td>
                             <td>
-                                {{$plano->preco}}
+                                {{number_format($plano->preco, 2, ',', '.')}}
                             </td>
-                            <td style="width: 50px">
-                                <a href="" class="btn btn-warning">Ver</a>
+                            <td style="width: 150px">
+                                <a href="{{route('plano.edit', $plano->id)}}" class="btn btn-info">Edit</a>
+                                <a href="{{route('plano.show', $plano->url)}}" class="btn btn-warning">Ver</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
             <div class="card-footer">
-                {!! $planos->links()!!}
+                @if (isset($filtros))
+                {!! $planos->appends($filtros)->links()!!}
+                @else
+                    {!! $planos->links()!!}
+                @endif
             </div>
         </div>
     </div>

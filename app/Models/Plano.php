@@ -7,4 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Plano extends Model
 {
     protected $fillable = ['nome', 'url', 'preco', 'descricao'];
+
+    public function search($filtro = null){
+
+        $result = $this->where('nome', 'LIKE', "%{$filtro}%")
+                ->orWhere('descricao', 'LIKE', "%{$filtro}%")->paginate(4);
+        return $result;
+    }
 }
