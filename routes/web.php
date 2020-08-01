@@ -12,16 +12,33 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('admin', 'Admin\PlanoController@home')->name('adimin.home');
 
-Route::get('admin/planos', 'Admin\PlanoController@index')->name('plano.index');
-Route::get('admin/planos/create', 'Admin\PlanoController@create')->name('plano.create');
-Route::post('admin/planos/store', 'Admin\PlanoController@store')->name('plano.store');
-Route::get('admin/planos/{url}/show', 'Admin\PlanoController@show')->name('plano.show');
-Route::get('admin/planos/{id}/edit', 'Admin\PlanoController@edit')->name('plano.edit');
-Route::put('admin/planos/{id}/update', 'Admin\PlanoController@update')->name('plano.update');
-Route::delete('admin/planos/{url}/destroy', 'Admin\PlanoController@destroy')->name('plano.destroy');
-Route::any('admin/planos/search', 'Admin\PlanoController@search')->name('plano.search');
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('admin')->namespace('Admin')->group(function(){
+    Route::get('/', 'PlanoController@home')->name('admin.home');
+    /**
+    * Plano
+    */
+    Route::get('/planos', 'PlanoController@index')->name('plano.index');
+    Route::get('/planos/create', 'PlanoController@create')->name('plano.create');
+    Route::post('/planos/store', 'PlanoController@store')->name('plano.store');
+    Route::get('/planos/{url}/show', 'PlanoController@show')->name('plano.show');
+    Route::get('/planos/{id}/edit', 'PlanoController@edit')->name('plano.edit');
+    Route::put('/planos/{id}/update', 'PlanoController@update')->name('plano.update');
+    Route::delete('/planos/{url}/destroy', 'PlanoController@destroy')->name('plano.destroy');
+    Route::any('/planos/search', 'PlanoController@search')->name('plano.search');
+
+    /**
+     * Detalhes do plano
+     */
+
+    Route::get('planos/{url}/detalhes', 'DetalhesPlanoController@index')->name('detalhes.index');
+    Route::get('planos/{url}/detalhes/create', 'DetalhesPlanoController@create')->name('detalhes.create');
+    Route::post('planos/{url}/detalhes/store', 'DetalhesPlanoController@store')->name('detalhes.store');
+    Route::get('planos/{url}/detalhes/edit', 'DetalhesPlanoController@edit')->name('detalhes.edit');
+    Route::put('planos/{id}/detalhes/update', 'DetalhesPlanoController@update')->name('detalhes.update');
+
 });
+
+/* Route::get('/', function () {
+    return view('welcome');
+}); */

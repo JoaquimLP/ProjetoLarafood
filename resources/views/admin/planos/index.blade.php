@@ -6,7 +6,7 @@
     <h1>Planos <a href="{{route('plano.create')}}" class="btn btn-primary"><i class="fas fa-plus-square"></i> ADICIONAR</a></h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="{{route('adimin.home')}}">Home</a>
+            <a href="{{route('admin.home')}}">Home</a>
         </li>
         <li <li class="breadcrumb-item active">
             <a href="{{route('plano.index')}}">planos</a>
@@ -42,7 +42,8 @@
                             <td>
                                 {{number_format($plano->preco, 2, ',', '.')}}
                             </td>
-                            <td style="width: 150px">
+                            <td style="width: 250px">
+                                <a href="{{route('detalhes.index', $plano->url)}}" class="btn btn-primary">Detalhes</a>
                                 <a href="{{route('plano.edit', $plano->id)}}" class="btn btn-info">Edit</a>
                                 <a href="{{route('plano.show', $plano->url)}}" class="btn btn-warning">Ver</a>
                             </td>
