@@ -14,7 +14,7 @@
         <a href="{{route('plano.show', $plano->url)}}">{{$plano->nome}}</a>
     </li>
     <li class="breadcrumb-item active">
-        <a href="{{route('detalhes.index', $plano->url)}}">planos</a>
+        <a href="{{route('detalhes.index', $plano->url)}}">Detalhes</a>
     </li>
     <li class="breadcrumb-item active">
         <a href="{{route('detalhes.edit', $plano->url)}}">Edita</a>
@@ -26,7 +26,7 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <form action="{{route('detalhes.update', $plano->url)}}" method="post" class="form">
+        <form action="{{route('detalhes.update', $detalhe->id)}}" method="post" class="form">
             @method('PUT')
             @csrf
             @include('admin.detalhesPlano._partials._form')

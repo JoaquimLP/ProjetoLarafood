@@ -1,8 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Detalhes do Plando {{$plano->nome}}')
+@section('title', 'Detalhes do Plano')
 
 @section('content_header')
+    @include('includes.alert')
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <a href="{{route('admin.home')}}">Home</a>
@@ -14,7 +15,7 @@
             <a href="{{route('plano.show', $plano->url)}}">{{$plano->nome}}</a>
         </li>
         <li class="breadcrumb-item active">
-            <a href="{{route('detalhes.index', $plano->url)}}">planos</a>
+            <a href="{{route('detalhes.index', $plano->url)}}">Detalhes</a>
         </li>
     </ol>
     <h1>Detalhes do plano <a href="{{route('detalhes.create', $plano->url)}}" class="btn btn-primary"><i class="fas fa-plus-square"></i> ADICIONAR</a></h1>
@@ -38,7 +39,7 @@
                             </td>
                             <td style="width: 150px">
                                 <a href="{{route('detalhes.edit', $detalhe->id)}}" class="btn btn-info">Edit</a>
-                                <a href="{{route('plano.show', $plano->url)}}" class="btn btn-warning">Ver</a>
+                                <a href="{{route('detalhes.show',  [$plano->url, $detalhe->id])}}" class="btn btn-warning">Ver</a>
                             </td>
                         </tr>
                     @endforeach

@@ -13,6 +13,7 @@ class PlanoController extends Controller
     private $repositorio;
 
     public function __construct(Plano $plano){
+
         $this->repositorio = $plano;
     }
 
@@ -64,13 +65,21 @@ class PlanoController extends Controller
     }
 
     public function destroy($url){
-        $plano = $this->repositorio->where('url', $url)->first();
-
+        $plano = $this->repositorio
+            ->with('detalhes')
+            ->where('url', $url)->first();
+        if($plano->detalhes->count() > 0){
+            return redirect()
+                ->back()
+                ->with('error', 'Existe detalhes vinculado a esse plano, portando não pode deletar'); ;
+        }
         if (empty($plano)) {
             return redirect()->back();
         } 
         $plano->delete();
-        return redirect()->route('plano.index');
+        return redirect()
+            ->route('plano.index')
+            ->with('message', 'Resgistro deletado com sucesso'); ;
         
     }
 

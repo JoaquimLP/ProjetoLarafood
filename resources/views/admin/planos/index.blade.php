@@ -16,6 +16,7 @@
 
 @section('content')
     <div class="card">
+        @include('includes.alert')
         <div class="card-header">
            <form action="{{route('plano.search')}}" class="form form-inline" method="post">
                 @csrf

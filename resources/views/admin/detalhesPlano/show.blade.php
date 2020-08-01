@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Cadastrar um novo detalhes')
+@section('title', 'Detalhes')
 
 @section('content_header')
     <ol class="breadcrumb">
@@ -17,18 +17,26 @@
             <a href="{{route('detalhes.index', $plano->url)}}">Detalhes</a>
         </li>
         <li class="breadcrumb-item active">
-            <a href="{{route('detalhes.create', $plano->url)}}">Criar</a>
+            <a href="{{route('detalhes.show',  [$plano->url, $detalhe->id])}}">Show</a>
         </li>
     </ol>
-    <h1>Cadastrar um novo detalhes para o plano {{$plano->nome}}</h1>
+    <h1>Detalhes para o plano {{$plano->nome}}</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{route('detalhes.store', $plano->url)}}" method="post" class="form">
+           <ul>
+               <li>
+                <strong>Nome: {{$detalhe->nome}}</strong>
+               </li>
+           </ul>
+        </div>
+        <div class="card-footer">
+            <form action="{{route('detalhes.destroy',  [$plano->url, $detalhe->id])}}" method="post">
+                @method('DELETE')
                 @csrf
-                @include('admin.detalhesPlano._partials._form')
+                <button type="submit" class="btn btn-danger">Deletar o detalhe {{$detalhe->nome}}, do plano {{$plano->nome}}</button>
             </form>
         </div>
     </div>

@@ -13,8 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* Route::get('/', function () {
+    return view('welcome');
+}); */
+Route::redirect('/', '/home');
+Route::get('/', 'Admin\PlanoController@home')->name('admin.home');
 Route::prefix('admin')->namespace('Admin')->group(function(){
-    Route::get('/', 'PlanoController@home')->name('admin.home');
+    
     /**
     * Plano
     */
@@ -36,9 +41,8 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
     Route::post('planos/{url}/detalhes/store', 'DetalhesPlanoController@store')->name('detalhes.store');
     Route::get('planos/{url}/detalhes/edit', 'DetalhesPlanoController@edit')->name('detalhes.edit');
     Route::put('planos/{id}/detalhes/update', 'DetalhesPlanoController@update')->name('detalhes.update');
+    Route::get('planos/{url}/detalhes/{id}/show', 'DetalhesPlanoController@show')->name('detalhes.show');
+    Route::delete('planos/{url}/detalhes/{id}/delete', 'DetalhesPlanoController@destroy')->name('detalhes.destroy');
 
 });
 
-/* Route::get('/', function () {
-    return view('welcome');
-}); */

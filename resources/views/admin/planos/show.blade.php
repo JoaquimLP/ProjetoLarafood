@@ -23,6 +23,7 @@
                     <strong>Descrição: </strong>R${{$plano->descricao}}
                 </li>
             </ul>
+            @include('includes.alert')
             <form action="{{route('plano.destroy', $plano->url)}}" method="post">
                 @csrf
                 @method('DELETE')
