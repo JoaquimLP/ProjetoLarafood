@@ -71,7 +71,7 @@ class PlanoController extends Controller
         if($plano->detalhes->count() > 0){
             return redirect()
                 ->back()
-                ->with('error', 'Existe detalhes vinculado a esse plano, portando não pode deletar'); ;
+                ->with('error', 'Existe detalhes vinculado a esse plano, portando não pode deletar');
         }
         if (empty($plano)) {
             return redirect()->back();
@@ -79,7 +79,7 @@ class PlanoController extends Controller
         $plano->delete();
         return redirect()
             ->route('plano.index')
-            ->with('message', 'Resgistro deletado com sucesso'); ;
+            ->with('message', 'Resgistro deletado com sucesso');
         
     }
 

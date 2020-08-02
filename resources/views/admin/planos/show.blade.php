@@ -3,6 +3,18 @@
 @section('title', 'Detalhes do Plano')
 
 @section('content_header')
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="{{route('admin.home')}}">Home</a>
+    </li>
+    <li class="breadcrumb-item active">
+        <a href="{{route('perfil.index')}}">Perfil</a>
+    </li>
+    <li class="breadcrumb-item active">
+        <a href="{{route('perfil.show')}}">Detalhes do {{$plano->nome}}</a>
+    </li>
+</ol>
+<h1>Cadastrar um novo Plano</h1>
     <h1>Detalhes do Plano <b> {{$plano->nome}}</h1>
 @stop
 
