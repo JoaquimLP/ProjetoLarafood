@@ -44,7 +44,13 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
     Route::get('planos/{url}/detalhes/{id}/show', 'DetalhesPlanoController@show')->name('detalhes.show');
     Route::delete('planos/{url}/detalhes/{id}/delete', 'DetalhesPlanoController@destroy')->name('detalhes.destroy');
 
+    // Rotas de Perfil
     Route::any('/perfil/search', 'PerfilController@search')->name('perfil.search');
     Route::resource('/perfil', 'PerfilController');
+
+    // Rotas de Permissao
+    Route::any('/permissao/search', 'PermissaoController@search')->name('permissao.search');
+    Route::resource('/permissao', 'PermissaoController');
+
 });
 

@@ -8,10 +8,10 @@
         <a href="{{route('admin.home')}}">Home</a>
     </li>
     <li class="breadcrumb-item active">
-        <a href="{{route('perfil.index')}}">Perfil</a>
+        <a href="{{route('plano.index')}}">Plano</a>
     </li>
     <li class="breadcrumb-item active">
-        <a href="{{route('perfil.show')}}">Detalhes do {{$plano->nome}}</a>
+        <a href="{{route('plano.show', $plano->url)}}">Detalhes do {{$plano->nome}}</a>
     </li>
 </ol>
 <h1>Cadastrar um novo Plano</h1>
