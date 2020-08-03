@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Perfil')
+@section('title', 'Permissões para o Perfil')
 
 @section('content_header')
     @include('includes.alert')
@@ -11,8 +11,11 @@
         <li class="breadcrumb-item active">
             <a href="{{route('perfil.index')}}">Perfil</a>
         </li>
+        <li class="breadcrumb-item active">
+            <a href="{{route('perfil.permissao', $perfil->id)}}">{{$perfil->nome}}</a>
+        </li>
     </ol>
-    <h1>Perfil <a href="{{route('perfil.create')}}" class="btn btn-primary float-right"><i class="fas fa-plus-square"></i> ADICIONAR</a></h1>
+    <h1>Permissões para o perfil <br>{{$perfil->nome}} <a href="{{route('perfil.permissao.createPermissao', $perfil->id)}}" class="btn btn-primary float-right"><i class="fas fa-plus-square"></i> ADICIONAR PERMISSÃO</a></h1>
 @stop
 
 @section('content')
@@ -25,7 +28,7 @@
             </form>
         </div>
         <div class="card-body">
-            @if ($perfils->count() != 0)
+            @if ($permissaos->count() != 0)
                 <table class="table table-condensed">
                     <thead>
                         <tr>
@@ -35,31 +38,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($perfils as $perfil)
+                        @foreach ($permissaos as $permissao)
                             <tr>
                                 <td>
-                                    {{$perfil->nome}}
+                                    {{$permissao->nome}}
                                 </td>
                                 <td>
-                                    {{$perfil->descricao}}
+                                    {{$permissao->descricao}}
                                 </td>
-                                <td style="width: 250px">
-                                    <a href="{{route('perfil.edit', $perfil->id)}}" class="btn btn-info">Edit</a>
-                                    <a href="{{route('perfil.show',  $perfil->id)}}" class="btn btn-warning">Ver</a>
-                                    <a href="{{route('perfil.permissao',  $perfil->id)}}" class="btn btn-secondary"><i class="fas fa-lock"></i></a>
+                                <td style="width: 0px">
+                                    <a href="{{route('perfil.permissao.detachPermissao', [$perfil->id, $permissao->id])}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             @else
-                <h1>Não existe perfil candastrado</h1>
+                <h1>Não existe permissões candastrada para esse perfil</h1>
             @endif
             <div class="card-footer">
                 @if (isset($filtros))
-                    {!!$perfils->appends($filtros)->links()!!}
+                    {!!$permissaos->appends($filtros)->links()!!}
                 @else
-                    {!!$perfils->links()!!}
+                    {!!$permissaos->links()!!}
                 @endif
             </div>
         </div>

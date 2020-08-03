@@ -15,7 +15,7 @@ class Plano extends Model
     public function search($filtro = null){
 
         $result = $this->where('nome', 'LIKE', "%{$filtro}%")
-                ->orWhere('descricao', 'LIKE', "%{$filtro}%")->paginate(4);
+                ->orWhere('descricao', 'LIKE', "%{$filtro}%")->paginate(10);
         return $result;
     }
 }

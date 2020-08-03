@@ -22,7 +22,7 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        $perfils = $this->repositorio->latest()->paginate(4);
+        $perfils = $this->repositorio->latest()->paginate(10);
 
         return view('admin.perfil.index', compact('perfils'));
     }

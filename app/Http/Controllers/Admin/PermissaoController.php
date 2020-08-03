@@ -24,7 +24,7 @@ class PermissaoController extends Controller
      */
     public function index()
     {
-        $permissaos = $this->repositorio->latest()->paginate(4);
+        $permissaos = $this->repositorio->latest()->paginate(10);
 
         return view('admin.permissao.index', compact('permissaos'));
     }

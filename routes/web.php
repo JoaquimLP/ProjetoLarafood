@@ -52,5 +52,12 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
     Route::any('/permissao/search', 'PermissaoController@search')->name('permissao.search');
     Route::resource('/permissao', 'PermissaoController');
 
+    //Rotas de permissão e perfil
+    Route::get('perfil/{id}/permissao', 'PermissaoPerfilController@listaPermissao')->name('perfil.permissao');
+    Route::get('perfil/{id}/permissao/create_permissao', 'PermissaoPerfilController@createPermissao')->name('perfil.permissao.createPermissao');
+    Route::post('perfil/{id}/permissao/store_permissao', 'PermissaoPerfilController@storePermissao')->name('perfil.permissao.storePermissao');
+    Route::any('perfil/{id}/permissao/search_permissao', 'PermissaoPerfilController@searchPermissao')->name('perfil.permissao.searchPermissao');
+    Route::get('perfil/{id}/permissao/{idPermissao}/detach_permissao', 'PermissaoPerfilController@detachPermissao')->name('perfil.permissao.detachPermissao');
+
 });
 
