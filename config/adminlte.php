@@ -232,6 +232,11 @@ return [
 
     'menu' => [
         [
+            'text' => 'Home',
+            'url'  => 'admin',
+            'icon' => 'fas fa-home'
+        ],
+        [
             'text' => 'Planos',
             'url'  => 'admin/planos',
             'icon' => 'fas fa-list-ul'

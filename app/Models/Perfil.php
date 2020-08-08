@@ -23,6 +23,15 @@ class Perfil extends Model
         return $this->belongsToMany(Permissao::class, 'permissao_perfil');
     }
 
+     /**
+     * Get Planos
+     */
+
+    public function planos(){
+        
+        return $this->belongsToMany(Plano::class, 'plano_perfil');
+    }
+
     /**
      * Permissão não vinculada a esse perfil
      */
@@ -52,5 +61,15 @@ class Perfil extends Model
             })
             ->paginate(10);
         return $permissao;
+    }
+
+    public function createPlanos(){
+        $planos = Plano::whereNotIn('id', function ($query){
+            $query->select("plano_perfil.plano_id");
+            $query->from("plano_perfil");
+            $query->whereRaw("plano_perfil.perfil_id={$this->id}");
+        })->paginate(10);
+
+        return $planos;
     }
 }

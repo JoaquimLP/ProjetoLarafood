@@ -16,9 +16,14 @@ use Illuminate\Support\Facades\Route;
 /* Route::get('/', function () {
     return view('welcome');
 }); */
-Route::redirect('/', '/home');
-Route::get('/', 'Admin\PlanoController@home')->name('admin.home');
-Route::prefix('admin')->namespace('Admin')->group(function(){
+Auth::routes();
+//Route::get('/', 'Admin\PlanoController@home')->name('admin.home');
+Route::get('/', 'Site\HomeController@index')->name('site');
+Route::get('admin', 'HomeController@index')->name('admin.home');
+Route::prefix('admin')
+        ->namespace('Admin')
+        ->middleware('auth')
+        ->group(function(){
     
     /**
     * Plano
@@ -58,12 +63,20 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
     Route::post('perfil/{id}/permissao/store_permissao', 'PermissaoPerfilController@storePermissao')->name('perfil.permissao.storePermissao');
     Route::any('perfil/{id}/permissao/search_permissao', 'PermissaoPerfilController@searchPermissao')->name('perfil.permissao.searchPermissao');
     Route::get('perfil/{id}/permissao/{idPermissao}/detach_permissao', 'PermissaoPerfilController@detachPermissao')->name('perfil.permissao.detachPermissao');
+    //Rotas de permissão e perfil
+    Route::get('permissao/{id}/perfil', 'PerfilPermissaoController@listaPerfil')->name('permissao.perfil');
+    Route::get('permissao/{id}/perfil/create_perfil', 'PerfilPermissaoController@createPerfil')->name('permissao.perfil.createperfil');
+    Route::post('permissao/{id}/perfil/store_perfil', 'PerfilPermissaoController@storePerfil')->name('permissao.perfil.storeperfil');
+    Route::any('permissao/{id}/perfil/search_perfil', 'PerfilPermissaoController@searchPerfil')->name('permissao.perfil.searchperfil');
+    Route::get('permissao/{id}/perfil/{idperfil}/detach_perfil', 'PerfilPermissaoController@detachPerfil')->name('permissao.perfil.detachperfil');
 
-    Route::get('perfil/{id}/perfil', 'PerfilPermissaoController@listaPerfil')->name('permissao.perfil');
-    Route::get('perfil/{id}/perfil/create_perfil', 'PerfilPermissaoController@createPerfil')->name('permissao.perfil.createperfil');
-    Route::post('perfil/{id}/perfil/store_perfil', 'PerfilPermissaoController@storePerfil')->name('permissao.perfil.storeperfil');
-    Route::any('perfil/{id}/perfil/search_perfil', 'PerfilPermissaoController@searchPerfil')->name('permissao.perfil.searchperfil');
-    Route::get('perfil/{id}/perfil/{idperfil}/detach_perfil', 'PerfilPermissaoController@detachPerfil')->name('permissao.perfil.detachperfil');
+    //Planos Perfil
+    Route::get('perfil/{id}/planos', 'PlanoPerfilController@indexPlano')->name('perfil.plano');
+    Route::get('perfil/{id}/planos/create', 'PlanoPerfilController@createPlano')->name('perfil.plano.create');
+    Route::post('perfil/{id}/planos/store', 'PlanoPerfilController@storePlano')->name('perfil.plano.store');
+    Route::get('perfil/{id}/planos/{idplanol}/detach', 'PlanoPerfilController@sdetachPlano')->name('perfil.plano.detach');
 
 });
+
+
 

@@ -73,7 +73,6 @@ class PerfilPermissaoController extends Controller
         $permissao = $this->dadosPermissao->find($idPermissao);
 
         if(empty($perfil) || empty($permissao)){
-            dd($permissao);
             return redirect()->back();
         }
      

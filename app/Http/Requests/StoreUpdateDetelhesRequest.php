@@ -25,7 +25,7 @@ class StoreUpdateDetelhesRequest extends FormRequest
     {
         $id = $this->segment(3);
         return [
-            'nome' => "required|min:3|max:255|unique:detalhes_planos,nome,{$id},id",
+            'nome' => "required|min:3|max:255",
         ];
     }
 }

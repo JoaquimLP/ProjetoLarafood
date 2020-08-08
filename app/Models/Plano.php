@@ -18,4 +18,12 @@ class Plano extends Model
                 ->orWhere('descricao', 'LIKE', "%{$filtro}%")->paginate(10);
         return $result;
     }
+
+    /**
+     * Get Perfils
+     */
+
+    public function perfils(){ 
+        return $this->belongsToMany(Perfil::class, 'plano_perfil');
+    }
 }
