@@ -19,7 +19,11 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 //Route::get('/', 'Admin\PlanoController@home')->name('admin.home');
 Route::get('/', 'Site\HomeController@index')->name('site');
+Route::get('/plano/{url}', 'Site\HomeController@plano')->name('plano.cadastrar');
+
 Route::get('admin', 'HomeController@index')->name('admin.home');
+
+
 Route::prefix('admin')
         ->namespace('Admin')
         ->middleware('auth')

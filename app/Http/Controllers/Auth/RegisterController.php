@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Services\EmpresaServices;
+use Illuminate\Support\Str;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -53,6 +55,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'cnpj' => ['required', 'unique:empresas'],
+            'empresa' => ['required','min:3', 'max:255', 'unique:empresas,nome'],
         ]);
     }
 
@@ -62,12 +66,17 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create( array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $data['cnpj'] = str_replace(['.', '/','-'], '', $data['cnpj']);
+
+        if(!$plano = session('plano')){
+            return redirect()->route('site');
+        };
+
+        $empresaService = app(EmpresaServices::class);
+        $user = $empresaService->make($plano, $data);
+
+        return $user;
     }
 }

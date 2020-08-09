@@ -13,4 +13,14 @@ class HomeController extends Controller
         
         return view('site.home.index', compact('planos'));
     }
+
+    public function plano($url){
+        $plano = Plano::where('url', $url)->first();
+
+        if(empty($plano)){
+            return redirect()->back();
+        }
+        session()->put('plano', $plano);
+        return redirect()->route('register');
+    }
 }

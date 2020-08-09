@@ -82,10 +82,11 @@
     @else
         <script src="{{ mix(config('adminlte.laravel_mix_js_path', 'js/app.js')) }}"></script>
     @endif
-
+    <script src="https://cdnjs.com/libraries/jquery.mask"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
 
 </body>
-
+@stack('scripts')
 </html>
