@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Plano;
 use Illuminate\Database\Seeder;
 
 class PlanosSeeder extends Seeder
@@ -11,6 +12,11 @@ class PlanosSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Plano::create([
+            'nome' => "Businers",
+            'url' => "businers",
+            'preco' => 499.99,
+            'descricao' => "Plano empresarial",
+        ]);
     }
 }

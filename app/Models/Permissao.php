@@ -8,7 +8,7 @@ class Permissao extends Model
 {
     protected $table = "permissaos";
 
-    protected $fillable = ['nome', 'descricao'];
+    protected $filablel = ['nome', 'descricao'];
 
     public function search($filtro = null){
         $dados = $this->where('nome', 'LIKE', "%{$filtro}%")

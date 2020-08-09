@@ -12,6 +12,10 @@ class Plano extends Model
         return $this->hasMany(DetalhesPlano::class);
     }
 
+    public function empresas(){
+        return $this->hasMany(Empresa::class);
+    }
+
     public function search($filtro = null){
 
         $result = $this->where('nome', 'LIKE', "%{$filtro}%")
