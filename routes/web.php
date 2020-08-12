@@ -80,6 +80,12 @@ Route::prefix('admin')
     Route::post('perfil/{id}/planos/store', 'PlanoPerfilController@storePlano')->name('perfil.plano.store');
     Route::get('perfil/{id}/planos/{idplanol}/detach', 'PlanoPerfilController@sdetachPlano')->name('perfil.plano.detach');
 
+    /**
+     * Rotas de usuário
+     */
+    Route::any('/usuario/search', 'UsuarioController@search')->name('usuario.search');
+    Route::resource('/usuario', 'UsuarioController'); 
+
 });
 
 
