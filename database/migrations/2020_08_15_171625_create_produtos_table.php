@@ -15,7 +15,25 @@ class CreateProdutosTable extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo')->unique();
+            $table->string('flag')->unique();
+            $table->double('preco', 10,2);
+            $table->text('descricao');
+            $table->string('image');
+            $table->unsignedBigInteger('empresa_id');
             $table->timestamps();
+
+            $table->foreign('empresa_id')->references('id')
+                    ->on('empresas')->onDelete('cascade');
+        });
+
+        Schema::create('categoria_produto', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('categoria_id');
+            $table->unsignedBigInteger('produto_id');
+
+            $table->foreign('produto_id')->references('id')->on('produtos');
+            $table->foreign('categoria_id')->references('id')->on('categorias');
         });
     }
 
@@ -26,6 +44,7 @@ class CreateProdutosTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('categoria_produto');
         Schema::dropIfExists('produtos');
     }
 }

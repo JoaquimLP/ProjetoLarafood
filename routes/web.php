@@ -92,6 +92,12 @@ Route::prefix('admin')
     Route::any('/categoria/search', 'CategoriaController@search')->name('categoria.search');
     Route::resource('/categoria', 'CategoriaController');  
 
+    /**
+     * Rotas de Produto
+     */
+    Route::any('/produto/search', 'ProdutoController@search')->name('produto.search');
+    Route::resource('/produto', 'ProdutoController');  
+
 });
 
 

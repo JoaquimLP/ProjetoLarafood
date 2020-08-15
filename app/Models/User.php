@@ -39,7 +39,8 @@ class User extends Authenticatable
     ];
 
     public function empresa(){
-        return $this->hasOne(Empresa::class);
+       // dd($this->hasOne(Empresa::class,  'empresa_id'));
+        return $this->hasOne(Empresa::class,  'id', 'empresa_id');
     }
 
     /**

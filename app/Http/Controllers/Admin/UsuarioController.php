@@ -22,7 +22,6 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //$usuario = auth()->user()->empresa_id;
         $usuarios = $this->dadosUser->empresaUsuario()->paginate();
 
         return view('admin.usuario.index', compact('usuarios'));
