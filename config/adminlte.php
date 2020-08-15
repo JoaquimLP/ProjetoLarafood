@@ -256,6 +256,11 @@ return [
             'url'  => 'admin/usuario',
             'icon' => 'fas fa-users'
         ],
+        [
+            'text' => 'Categoria',
+            'url'  => 'admin/categoria',
+            'icon' => 'fas fa-layer-group'
+        ],
     ],
 
     /*

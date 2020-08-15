@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -40,4 +41,17 @@ class User extends Authenticatable
     public function empresa(){
         return $this->hasOne(Empresa::class);
     }
+
+    /**
+     * Scope a query to only include popular users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeEmpresaUsuario(Builder $query)
+    {
+        return $query->where('empresa_id', auth()->user()->empresa_id);
+    }
+
+    
 }

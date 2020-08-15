@@ -22,8 +22,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuario = auth()->user()->empresa_id;
-        $usuarios = $this->dadosUser->where('empresa_id', $usuario)->paginate();
+        //$usuario = auth()->user()->empresa_id;
+        $usuarios = $this->dadosUser->empresaUsuario()->paginate();
 
         return view('admin.usuario.index', compact('usuarios'));
     }
@@ -79,7 +79,7 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        $usuario = $this->dadosUser->find($id);
+        $usuario = $this->dadosUser->empresaUsuario()->find($id);
         return view('admin.usuario.edit', compact('usuario'));
     }
 
@@ -90,19 +90,17 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateUsuarioRequest $request, $id)
     {
-        $usuario = $this->dadosUser->find($id);
+        $usuario = $this->dadosUser->empresaUsuario()->find($id);
 
-        $data = $request->all();
-        //$data['empresa_id'] = $usuario->empresa_id
+        $data = $request->only(['name', 'email']);
+      
         
-        if ($request->password != null) {
-            $usuario->password = bcrypt($request->password);
+        if (!empty($request->password)) {
+            $data['password'] = bcrypt($request->password);
         } 
-        $usuario->name = $request->name;
-        $usuario->email = $request->email;
-        $usuario->save();
+        $usuario->update($data);
     
         return redirect()->route('usuario.index')->with('success', 'Dados alterados com sucesso');
     }

@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\Categoria;
 use App\Models\Empresa;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Plano;
 use App\Observers\PlanoObserver;
 use App\Observers\EmpresaObserver;
+use App\Observers\CategoriaObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Plano::observe(PlanoObserver::class);
         Empresa::observe(EmpresaObserver::class);
+        Categoria::observe(CategoriaObserver::class);
     }
 }

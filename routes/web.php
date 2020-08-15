@@ -86,6 +86,12 @@ Route::prefix('admin')
     Route::any('/usuario/search', 'UsuarioController@search')->name('usuario.search');
     Route::resource('/usuario', 'UsuarioController'); 
 
+    /**
+     * Rotas de Categoria
+     */
+    Route::any('/categoria/search', 'CategoriaController@search')->name('categoria.search');
+    Route::resource('/categoria', 'CategoriaController');  
+
 });
 
 
