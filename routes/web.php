@@ -28,7 +28,7 @@ Route::prefix('admin')
         ->namespace('Admin')
         ->middleware('auth')
         ->group(function(){
-    
+
     /**
     * Plano
     */
@@ -84,27 +84,32 @@ Route::prefix('admin')
      * Rotas de usuário
      */
     Route::any('/usuario/search', 'UsuarioController@search')->name('usuario.search');
-    Route::resource('/usuario', 'UsuarioController'); 
+    Route::resource('/usuario', 'UsuarioController');
 
     /**
      * Rotas de Categoria
      */
     Route::any('/categoria/search', 'CategoriaController@search')->name('categoria.search');
-    Route::resource('/categoria', 'CategoriaController');  
+    Route::resource('/categoria', 'CategoriaController');
 
     /**
      * Rotas de Produto
      */
     Route::any('/produto/search', 'ProdutoController@search')->name('produto.search');
-    Route::resource('/produto', 'ProdutoController');  
+    Route::resource('/produto', 'ProdutoController');
 
-     //Rotas de Categoria e Produto
-     Route::get('produto/{id}/categoria', 'CategoriaProdutoController@listaCategoria')->name('produto.categoria');
-     Route::get('produto/{id}/categoria/create_categoria', 'CategoriaProdutoController@createCategoria')->name('produto.categoria.createcategoria');
-     Route::post('produto/{id}/categoria/store_categoria', 'CategoriaProdutoController@storeCategoria')->name('produto.categoria.storecategoria');
-     Route::any('produto/{id}/categoria/search_categoria', 'CategoriaProdutoController@searchCategoria')->name('produto.categoria.searchcategoria');
-     Route::get('produto/{id}/categoria/{idCategoria}/detach_categoria', 'CategoriaProdutoController@detachCategoria')->name('produto.categoria.detachcategoria');
+    //Rotas de Categoria e Produto
+    Route::get('produto/{id}/categoria', 'CategoriaProdutoController@listaCategoria')->name('produto.categoria');
+    Route::get('produto/{id}/categoria/create_categoria', 'CategoriaProdutoController@createCategoria')->name('produto.categoria.createcategoria');
+    Route::post('produto/{id}/categoria/store_categoria', 'CategoriaProdutoController@storeCategoria')->name('produto.categoria.storecategoria');
+    Route::any('produto/{id}/categoria/search_categoria', 'CategoriaProdutoController@searchCategoria')->name('produto.categoria.searchcategoria');
+    Route::get('produto/{id}/categoria/{idCategoria}/detach_categoria', 'CategoriaProdutoController@detachCategoria')->name('produto.categoria.detachcategoria');
 
+    /**
+     * Rotas de Mesa
+     */
+    Route::any('/mesa/search', 'MesaController@search')->name('mesa.search');
+    Route::resource('/mesa', 'MesaController');
 });
 
 

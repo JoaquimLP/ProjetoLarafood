@@ -266,6 +266,11 @@ return [
             'url'  => 'admin/produto',
             'icon' => 'fas fa-cubes'
         ],
+        [
+            'text' => 'Mesas',
+            'url'  => 'admin/mesa',
+            'icon' => 'fas fa-layer-group'
+        ],
     ],
 
     /*
