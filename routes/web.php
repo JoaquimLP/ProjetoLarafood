@@ -31,7 +31,7 @@ Route::prefix('admin')
         ->group(function(){
 
     Route::get('test-acl', function (){
-        dd(auth()->user()->isAdmin());
+        dd(auth()->user()->permissions());
     });
 
     /**
