@@ -15,6 +15,7 @@ class CategoriaProdutoController extends Controller
     {
         $this->dadosCategoria = $categoria;
         $this->dadosProduto = $produto;
+        $this->middleware('can:Produtos');
     }
 
     public function listaCategoria($id)
@@ -67,7 +68,7 @@ class CategoriaProdutoController extends Controller
 
         $categorias = $produto->searchCategoria($request->filtrar);
         $filtros = $request->except('_token');
-     
+
         return view('admin.produto.categoriaProduto.create', compact('produto', 'categorias', 'filtros'));
     }
 
@@ -78,7 +79,7 @@ class CategoriaProdutoController extends Controller
         if(empty($produto) || empty($categoria)){
             return redirect()->back();
         }
-     
+
         $produto->categorias()->detach($categoria);
         return redirect()
                 ->route('produto.categoria', $produto->id)

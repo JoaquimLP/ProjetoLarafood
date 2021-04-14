@@ -14,6 +14,7 @@ class CategoriaController extends Controller
     public function __construct(Categoria $categoria)
     {
         $this->dadosCategoria = $categoria;
+        $this->middleware('can:Categoria');
     }
     /**
      * Display a listing of the resource.
@@ -133,7 +134,7 @@ class CategoriaController extends Controller
                 }
             })->paginate();
 
-     
+
         return view('admin.categoria.index', compact('categorias', 'filtros'));
     }
 }

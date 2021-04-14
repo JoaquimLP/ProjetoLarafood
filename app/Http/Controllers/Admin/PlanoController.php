@@ -15,6 +15,7 @@ class PlanoController extends Controller
     public function __construct(Plano $plano){
 
         $this->repositorio = $plano;
+        $this->middleware('can:Planos');
     }
 
     public function index(){
@@ -27,7 +28,7 @@ class PlanoController extends Controller
     }
 
     public function store(StoreUpdatePlanosRequest $request){
- 
+
         $this->repositorio->create($request->all());
         return redirect()->route('plano.index');
     }
@@ -37,9 +38,9 @@ class PlanoController extends Controller
 
         if (empty($plano)) {
             return redirect()->back();
-        } 
+        }
         return view('admin.planos.show', compact('plano'));
-        
+
     }
 
     public function edit($id){
@@ -48,20 +49,20 @@ class PlanoController extends Controller
 
         if (empty($plano)) {
             return redirect()->back();
-        } 
+        }
         return view('admin.planos.edit', compact('plano'));
-        
+
     }
 
     public function update(StoreUpdatePlanosRequest $request, $id){
-        
+
         $plano = $this->repositorio->find($id);
         if (empty($plano)) {
             return redirect()->back();
         }
         $plano->update($request->all());
         return redirect()->route('plano.index');
-        
+
     }
 
     public function destroy($url){
@@ -75,18 +76,18 @@ class PlanoController extends Controller
         }
         if (empty($plano)) {
             return redirect()->back();
-        } 
+        }
         $plano->delete();
         return redirect()
             ->route('plano.index')
             ->with('message', 'Resgistro deletado com sucesso');
-        
+
     }
 
     public function search(Request $request){
         $planos = $this->repositorio->search($request->filtrar);
         $filtros = $request->except('_token');
         return view('admin.planos.index', compact('planos', 'filtros'));
-        
+
     }
 }

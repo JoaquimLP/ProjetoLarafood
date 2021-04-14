@@ -15,6 +15,7 @@ class PermissaoController extends Controller
     public function __construct(Permissao $permissao){
 
         $this->repositorio = $permissao;
+        $this->middleware('can:Permissão');
     }
 
     /**
@@ -121,7 +122,7 @@ class PermissaoController extends Controller
     }
 
     public function search(Request $request){
-    
+
         $filtros = $request->except('_token');
         $permissaos = $this->repositorio->search($request->filtrar);
         return view('admin.permissao.index', compact('permissaos', 'filtros'));

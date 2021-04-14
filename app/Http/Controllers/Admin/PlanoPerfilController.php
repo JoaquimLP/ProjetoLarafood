@@ -14,6 +14,7 @@ class PlanoPerfilController extends Controller
     public function __construct(Plano $plano, Perfil $perfil){
         $this->dadosPlano = $plano;
         $this->dadosPerfil = $perfil;
+        $this->middleware('can:Planos');
     }
 
     public function indexPlano($id){
@@ -60,7 +61,7 @@ class PlanoPerfilController extends Controller
         if(empty($perfil) || empty($plano)){
             return redirect()->back();
         }
-     
+
         $perfil->planos()->detach($plano);
         return redirect()
                 ->route('perfil.plano', $perfil->id)

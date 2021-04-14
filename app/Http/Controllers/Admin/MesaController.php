@@ -14,6 +14,7 @@ class MesaController extends Controller
     public function __construct(Mesa $mesa)
     {
         $this->dadosMesa = $mesa;
+        $this->middleware('can:Mesas');
     }
     /**
      * Display a listing of the resource.

@@ -14,6 +14,7 @@ class UsuarioController extends Controller
     public function __construct(User $user)
     {
         $this->dadosUser = $user;
+        $this->middleware('can:Usuário');
     }
     /**
      * Display a listing of the resource.
@@ -94,13 +95,13 @@ class UsuarioController extends Controller
         $usuario = $this->dadosUser->empresaUsuario()->find($id);
 
         $data = $request->only(['name', 'email']);
-      
-        
+
+
         if (!empty($request->password)) {
             $data['password'] = bcrypt($request->password);
-        } 
+        }
         $usuario->update($data);
-    
+
         return redirect()->route('usuario.index')->with('success', 'Dados alterados com sucesso');
     }
 

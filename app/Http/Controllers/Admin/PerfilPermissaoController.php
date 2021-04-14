@@ -14,6 +14,7 @@ class PerfilPermissaoController extends Controller
     public function __construct(Perfil $perfil, Permissao $permissao){
         $this->dadosPerfil = $perfil;
         $this->dadosPermissao = $permissao;
+        $this->middleware('can:Perfis');
     }
 
     public function listaPerfil($id){
@@ -64,7 +65,7 @@ class PerfilPermissaoController extends Controller
 
         $perfils = $permissao->searchPerfil($request->filtrar);
         $filtros = $request->except('_token');
-     
+
         return view('admin.permissao.perfilPermissao.create', compact('perfils', 'permissao', 'filtros'));
     }
 
@@ -75,7 +76,7 @@ class PerfilPermissaoController extends Controller
         if(empty($perfil) || empty($permissao)){
             return redirect()->back();
         }
-     
+
         $permissao->perfil()->detach($perfil);
         return redirect()
                 ->route('permissao.perfil', $permissao->id)

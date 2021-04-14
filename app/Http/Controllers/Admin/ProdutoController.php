@@ -15,6 +15,7 @@ class ProdutoController extends Controller
     public function __construct(Produto $produto)
     {
         $this->dadosProduto = $produto;
+        $this->middleware('can:Produtos');
     }
     /**
      * Display a listing of the resource.
@@ -67,7 +68,7 @@ class ProdutoController extends Controller
         if(!$produto){
             return redirect()->back();
         }
-        
+
 
         return view('admin.produto.show', compact('produto'));
     }
@@ -150,7 +151,7 @@ class ProdutoController extends Controller
                 }
             })->paginate();
 
-     
+
         return view('admin.produto.index', compact('produtos', 'filtros'));
     }
 }

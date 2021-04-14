@@ -13,6 +13,7 @@ class PerfilController extends Controller
 
     public function __construct(Perfil $perfil){
         $this->repositorio = $perfil;
+        $this->middleware('can:Perfis');
     }
 
     /**
@@ -45,7 +46,7 @@ class PerfilController extends Controller
      */
     public function store(StoreUpdatePerfilRequest $request)
     {
-        
+
         $this->repositorio->create($request->all());
         return redirect()
             ->route('perfil.index')
@@ -62,7 +63,7 @@ class PerfilController extends Controller
     public function show($id)
     {
         $perfil = $this->repositorio->find($id);
-        
+
         if (empty($perfil)) {
             return redirect()->back();
         }
@@ -126,7 +127,7 @@ class PerfilController extends Controller
     }
 
     /**
-     * 
+     *
      * Paramentro de pesquisa
      */
 
@@ -134,8 +135,8 @@ class PerfilController extends Controller
 
         $filtros = $request->except('_token');
         $perfils = $this->repositorio->search($request->filtrar);
-        
+
         return view('admin.perfil.index', compact('perfils', 'filtros'));
-        
+
     }
 }
