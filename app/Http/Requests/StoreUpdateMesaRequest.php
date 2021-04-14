@@ -13,7 +13,7 @@ class StoreUpdateMesaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,10 @@ class StoreUpdateMesaRequest extends FormRequest
      */
     public function rules()
     {
+        $id = $this->segment(3);
         return [
-            //
+            'nome' => "required|min:3|max:150|unique:mesas,nome,{$id},id",
+            'descricao' => "required|min:3|max:150",
         ];
     }
 }

@@ -269,7 +269,7 @@ return [
         [
             'text' => 'Mesas',
             'url'  => 'admin/mesa',
-            'icon' => 'fas fa-layer-group'
+            'icon' => 'fas fa-table'
         ],
     ],
 
