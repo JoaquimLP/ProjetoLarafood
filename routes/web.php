@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,10 @@ Route::prefix('admin')
         ->namespace('Admin')
         ->middleware('auth')
         ->group(function(){
+
+    Route::get('test-acl', function (){
+        dd(auth()->user()->permissions());
+    });
 
     /**
     * Plano

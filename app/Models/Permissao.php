@@ -8,7 +8,7 @@ class Permissao extends Model
 {
     protected $table = "permissaos";
 
-    protected $filablel = ['nome', 'descricao'];
+    protected $fillable = ['nome', 'descricao'];
 
     public function search($filtro = null){
         $dados = $this->where('nome', 'LIKE', "%{$filtro}%")
@@ -29,7 +29,7 @@ class Permissao extends Model
      * Permissão não vinculada a esse perfil
      */
     public function createPerfil(){
-        
+
         $perfil = Perfil::whereNotIn('id', function($query){
             $query->select('permissao_perfil.perfil_id');
             $query->from('permissao_perfil');
@@ -44,7 +44,7 @@ class Permissao extends Model
      * Pesquisa Permissão não vinculada a esse perfil
      */
     public function searchPerfil($filtro = null){
-        
+
         $perfil = Perfil::where(function ($queryFilter) use ($filtro){
                 $queryFilter->where('perfils.nome', 'LIKE', "%{$filtro}%");
             })->whereNotIn('id', function($query){

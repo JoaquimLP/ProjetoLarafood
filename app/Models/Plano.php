@@ -27,7 +27,7 @@ class Plano extends Model
      * Get Perfils
      */
 
-    public function perfils(){ 
+    public function perfils(){
         return $this->belongsToMany(Perfil::class, 'plano_perfil');
     }
 }

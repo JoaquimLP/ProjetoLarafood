@@ -13,6 +13,6 @@ class Empresa extends Model
     }
 
     public function planos(){
-        return $this->belongsTo(Plano::class);
+        return $this->hasMany(Plano::class, 'id', 'plano_id');
     }
 }
