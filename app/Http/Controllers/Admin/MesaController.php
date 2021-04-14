@@ -44,7 +44,10 @@ class MesaController extends Controller
      */
     public function store(StoreUpdateMesaRequest $request)
     {
-        $this->dadosMesa->create($request->all());
+        $empresa = auth()->user()->empresa;
+        $data = $request->all();
+        $data['empresa_id'] = $empresa->id;
+        $this->dadosMesa->create($data);
         return redirect()->route('mesa.index')->with('success', 'Mesa cadastrada com sucesso..');
     }
 
