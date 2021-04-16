@@ -11,32 +11,32 @@
             <a href="{{route('empresa.index')}}">empresa</a>
         </li>
         <li class="breadcrumb-item active">
-            <a href="{{route('empresa.show', $empresa->id)}}"> {{ $empresa->titulo }}</a>
+            <a href="{{route('empresa.show', $empresa->id)}}"> {{ $empresa->nome }}</a>
         </li>
     </ol>
-    <h1>Detalhes do Empresa <strong>{{ $empresa->titulo }}</strong></h1>
+    <h1>Detalhes do Empresa <strong>{{ $empresa->nome }}</strong></h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-body">
             <ul>
-                <img src="{{url("storage/{$empresa->image}")}}" alt="{{$empresa->image}}" class="imageEmpresa" style="width: 100px; height: 100px;">
+                <img src="{{url("storage/{$empresa->logo}")}}" alt="{{$empresa->logo}}" class="imageEmpresa" style="width: 100px; height: 100px;">
                 <li>
-                    <strong>Nome:</strong> {{ $empresa->titulo }}
+                    <strong>Nome:</strong> {{ $empresa->nome }}
                 </li>
                 <li>
-                    <strong>URL: </strong> {{ $empresa->flag }}
+                    <strong>URL: </strong> {{ $empresa->url }}
                 </li>
                 <li>
-                    <strong>Descrição:</strong> <br>{{ $empresa->descricao }}
+                    <strong>cnpj:</strong>{{ $empresa->cnpj }}
                 </li>
             </ul>
             @include('includes.alert')
             <form action="{{route('empresa.destroy', $empresa->id)}}" method="post">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Deleta o empresa {{$empresa->titulo}}</button>
+                <button type="submit" class="btn btn-danger">Deleta o empresa {{$empresa->nome}}</button>
             </form>
         </div>
     </div>

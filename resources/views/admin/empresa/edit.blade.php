@@ -29,3 +29,12 @@
     </div>
     @include('includes.alert')
 @stop
+
+@push('scripts')
+<script>
+    $(document).ready(function($){
+        $('#_cnpj').mask('00.000.000/0000-00');
+    });
+</script>
+@endpush
+

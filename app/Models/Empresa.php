@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Empresa extends Model
 {
-    protected $fillable = ['uuid', 'cnpj', 'plano_id', 'nome', 'url','email', 'data_inscriacao', 'data_expiracao'];
+    protected $fillable = ['uuid', 'cnpj', 'plano_id', 'nome', 'url','email', 'logo', 'data_inscriacao', 'data_expiracao'];
 
     public function usuarios(){
         return $this->hasMany(User::class);
     }
 
     public function planos(){
-        return $this->hasMany(Plano::class, 'id', 'plano_id');
+        return $this->hasOne(Plano::class, 'id', 'plano_id');
     }
 }

@@ -13,7 +13,7 @@ class StoreUpdateEmpresaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,20 @@ class StoreUpdateEmpresaRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $id = $this->segment(3);
+        $rules = [
+            'nome' => "required|min:3|max:150|unique:empresas,nome,{$id},id",
+            'cnpj' => "required|unique:empresas,cnpj,{$id},id",
+            'email' => 'nullable|email|max:150',
+            'image' => 'required|image'
         ];
+
+        if($this->method() == "PUT"){
+            $rules = [
+                'image' => 'image'
+            ];
+        }
+
+        return $rules;
     }
 }

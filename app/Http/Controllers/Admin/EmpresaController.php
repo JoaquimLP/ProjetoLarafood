@@ -104,14 +104,15 @@ class EmpresaController extends Controller
         if(!$empresa){
             return redirect()->back();
         }
-        $empresa = auth()->user()->empresa;
+
         $data = $request->all();
         if($request->hasFile('image') && $request->image->isValid()){
-            if(Storage::exists($empresa->image)){
-                Storage::delete($empresa->image);
+            if(Storage::exists($empresa->logo)){
+                Storage::delete($empresa->logo);
             }
             $data['logo'] = $request->image->store("empresa/logo/{$empresa->uuid}");
         }
+        $data['cnpj'] = str_replace(['.', '/','-'], '', $data['cnpj']);
         $empresa->update($data);
         return redirect()->route('empresa.index')->with('success', 'Dados atualizado com sucesso..');
     }

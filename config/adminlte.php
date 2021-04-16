@@ -278,6 +278,12 @@ return [
             'icon' => 'fas fa-table',
             'can' => 'Mesas'
         ],
+        [
+            'text' => 'Empresas',
+            'url'  => 'admin/empresa',
+            'icon' => 'fas fa-building',
+            'can' => 'Empresas'
+        ],
     ],
 
     /*

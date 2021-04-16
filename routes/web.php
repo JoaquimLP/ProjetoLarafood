@@ -111,6 +111,12 @@ Route::prefix('admin')
      */
     Route::any('/mesa/search', 'MesaController@search')->name('mesa.search');
     Route::resource('/mesa', 'MesaController');
+
+    /**
+     * Rotas de Empresa
+     */
+    Route::any('/empresa/search', 'EmpresaController@search')->name('empresa.search');
+    Route::resource('/empresa', 'EmpresaController');
 });
 
 

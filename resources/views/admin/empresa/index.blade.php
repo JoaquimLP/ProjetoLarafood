@@ -3,7 +3,7 @@
 @section('title', 'Empresas')
 
 @section('content_header')
-    <h1>Empresa <a href="{{route('empresa.create')}}" class="btn btn-primary float-right"><i class="fas fa-plus-square"></i> ADICIONAR</a></h1>
+    <h1>Empresa {{-- <a href="{{route('empresa.create')}}" class="btn btn-primary float-right"><i class="fas fa-plus-square"></i> ADICIONAR</a> --}}</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <a href="{{route('admin.home')}}">Home</a>
@@ -40,21 +40,22 @@
                     @foreach ($empresas as $empresa)
                         <tr>
                             <td>
-                                <img src="{{url("storage/{$empresa->image}")}}" alt="{{$empresa->image}}" class="imageEmpresa" style="width: 100px; height: 100px;">
+                                @if ($empresa->logo)
+                                    <img src="{{url("storage/{$empresa->logo}")}}" alt="{{$empresa->logo}}" class="imageEmpresa" style="width: 100px; height: 100px;">
+                                @endif
                             </td>
                             <td>
-                                {{$empresa->titulo}}
+                                {{$empresa->nome}}
+                            </td>
+                            <td class="cnpj">
+                                {{$empresa->cnpj}}
                             </td>
                             <td>
-                                {{number_format($empresa->preco, 2, ',', '.')}}
-                            </td>
-                            <td>
-                                {{$empresa->descricao}}
+                                {{$empresa->planos->nome}}
                             </td>
                             <td style="width: 250px">
                                 <a href="{{route('empresa.edit', $empresa->id)}}" class="btn btn-info">Edit</a>
                                 <a href="{{route('empresa.show', $empresa->id)}}" class="btn btn-warning">Ver</a>
-                                <a href="{{route('empresa.categoria', $empresa->id)}}" class="btn btn-success"><i class="fas fa-layer-group"></i></a>
                             </td>
                         </tr>
                     @endforeach
@@ -70,3 +71,10 @@
         </div>
     </div>
 @stop
+@push('scripts')
+<script>
+    $(document).ready(function($){
+        $('.cnpj').mask('00.000.000/0000-00');
+    });
+</script>
+@endpush
