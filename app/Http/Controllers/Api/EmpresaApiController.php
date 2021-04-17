@@ -16,16 +16,20 @@ class EmpresaApiController extends Controller
         $this->empresaServices = $empresaServices;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return EmpresaResource::collection($this->empresaServices->getAllEmpresa());
+        $page = $request->get('per_page', 15);
+        $empresa = $this->empresaServices->getAllEmpresa($page);
+        return EmpresaResource::collection($empresa);
     }
 
 
     public function show($uuid)
     {
-        $empresa = $this->empresaServices->getEmpresaByUuuid($uuid);
-
-        return new EmpresaResource($empresa);
+        if($empresa = $this->empresaServices->getEmpresaByUuuid($uuid)){
+            return new EmpresaResource($empresa);
+        }else{
+            return response()->json(['message' => 'Not Found'], 404);
+        }
     }
 }

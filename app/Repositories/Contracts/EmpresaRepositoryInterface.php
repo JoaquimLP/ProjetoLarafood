@@ -4,6 +4,6 @@ namespace App\Repositories\Contracts;
 
 interface EmpresaRepositoryInterface
 {
-    public function getAllEmpresa();
+    public function getAllEmpresa(int $page);
     public function getEmpresaByUuuid(string $uuid);
 }

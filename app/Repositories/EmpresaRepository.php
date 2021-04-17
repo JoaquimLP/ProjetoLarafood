@@ -13,9 +13,9 @@ class EmpresaRepository implements EmpresaRepositoryInterface
     {
         $this->entity = $empresa;
     }
-    public function getAllEmpresa()
+    public function getAllEmpresa(int $page)
     {
-        return $this->entity->all();
+        return $this->entity->paginate($page);
 
     }
 

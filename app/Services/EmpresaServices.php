@@ -14,9 +14,9 @@ Class EmpresaServices
         $this->repository = $repository;
     }
 
-    public function getAllEmpresa()
+    public function getAllEmpresa(int $page)
     {
-        return $this->repository->getAllEmpresa();
+        return $this->repository->getAllEmpresa($page);
     }
 
     public function getEmpresaByUuuid(string $uuid)
