@@ -117,6 +117,12 @@ Route::prefix('admin')
      */
     Route::any('/empresa/search', 'EmpresaController@search')->name('empresa.search');
     Route::resource('/empresa', 'EmpresaController');
+
+    /**
+     * Rotas de Role
+     */
+    Route::any('/role/search', 'Acl\RoleController@search')->name('role.search');
+    Route::resource('/role', 'Acl\RoleController');
 });
 
 

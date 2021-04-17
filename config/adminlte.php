@@ -284,6 +284,12 @@ return [
             'icon' => 'fas fa-building',
             'can' => 'Empresas'
         ],
+        [
+            'text' => 'Funções',
+            'url'  => 'admin/role',
+            'icon' => 'fas fa-user-tag',
+            'can' => 'Empresas'
+        ],
     ],
 
     /*
