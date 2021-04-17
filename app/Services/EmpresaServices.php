@@ -3,12 +3,22 @@
 namespace App\Services;
 
 use App\Models\Plano;
-
+use App\Repositories\Contracts\EmpresaRepositoryInterface;
 
 Class EmpresaServices
 {
-    private $plano, $data = [];
-    
+    private $plano, $repository, $data = [];
+
+    public function __construct(EmpresaRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    public function getAllEmpresa()
+    {
+        return $this->repository->getAllEmpresa();
+    }
+
     public function make(Plano $plano, array $data)
     {
         $this->plano = $plano;
