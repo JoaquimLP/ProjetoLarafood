@@ -20,6 +20,7 @@ class EmpresaResource extends JsonResource
             'uuid' => $this->uuid,
             'flag' => $this->url,
             'cantact' => $this->email,
+            'logo' => $this->logo ? url("storage/$this->logo") : '',
             'date_creatad' => Carbon::parse($this->created_at)->format('d/m/Y'),
         ];
     }

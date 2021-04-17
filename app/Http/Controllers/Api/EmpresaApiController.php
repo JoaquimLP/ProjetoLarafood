@@ -20,4 +20,12 @@ class EmpresaApiController extends Controller
     {
         return EmpresaResource::collection($this->empresaServices->getAllEmpresa());
     }
+
+
+    public function show($uuid)
+    {
+        $empresa = $this->empresaServices->getEmpresaByUuuid($uuid);
+
+        return new EmpresaResource($empresa);
+    }
 }

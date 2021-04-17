@@ -18,4 +18,11 @@ class EmpresaRepository implements EmpresaRepositoryInterface
         return $this->entity->all();
 
     }
+
+    public function getEmpresaByUuuid(string $uuid)
+    {
+
+        return $this->entity->where('uuid', $uuid)->first();
+
+    }
 }
