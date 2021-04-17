@@ -30,6 +30,10 @@ Route::prefix('admin')
         ->middleware('auth')
         ->group(function(){
 
+        /* Route::get('/teste', function () {
+            auth()->user()->permissionsPlanos();
+        }); */
+
     /**
     * Plano
     */

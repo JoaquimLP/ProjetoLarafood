@@ -20,10 +20,10 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{route('roles.update', $role->id)}}" method="post" class="form">
+            <form action="{{route('role.update', $role->id)}}" method="post" class="form">
                 @csrf
                 @method('PUT')
-                @include('admin.role._partials._form')
+                @include('admin.roles._partials._form')
             </form>
         </div>
     </div>

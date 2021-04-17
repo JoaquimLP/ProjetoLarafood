@@ -23,7 +23,7 @@ class MesaController extends Controller
      */
     public function index()
     {
-        $mesas = $this->dadosMesa->paginate();
+        $mesas = $this->dadosMesa->where('empresa_id', auth()->user()->empresa_id)->paginate();
         return view('admin.mesa.index', compact('mesas'));
     }
 

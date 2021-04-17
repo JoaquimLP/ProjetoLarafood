@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\EmpresaCreated;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Services\EmpresaServices;
@@ -76,6 +77,8 @@ class RegisterController extends Controller
 
         $empresaService = app(EmpresaServices::class);
         $user = $empresaService->make($plano, $data);
+
+        event(new EmpresaCreated($user));
 
         return $user;
     }
