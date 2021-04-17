@@ -56,4 +56,28 @@ class User extends Authenticatable
     }
 
 
+    /**
+     * Get User
+     */
+
+    public function roles(){
+
+        return $this->belongsToMany(Role::class, 'user_role');
+    }
+
+    /**
+     * Role não vinculada a esse role
+     */
+    public function createRole(){
+
+        $role = Role::whereNotIn('id', function($query){
+            $query->select('user_role.role_id');
+            $query->from('user_role');
+            $query->whereRaw("user_role.user_id={$this->id}");
+        })->paginate(10);
+
+        return $role;
+    }
+
+
 }

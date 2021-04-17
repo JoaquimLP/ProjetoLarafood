@@ -18,59 +18,59 @@ class UserRoleController extends Controller
     }
 
     public function listaUser($id){
-        $role = $this->dadosRole->find($id);
+        $user = $this->dadosUser->find($id);
 
-        if(empty($role)){
+        if(empty($user)){
             return redirect()->back();
         }
 
-        $users = $role->users()->paginate();
+        $roles = $user->roles()->paginate();
 
-        return view('admin.roles.user-role.index', compact('role', 'users'));
+        return view('admin.usuario.user-role.index', compact('user', 'roles'));
     }
 
 
     public function createUser($id){
-        $role = $this->dadosRole->find($id);
+        $user = $this->dadosUser->find($id);
 
-        if(empty($role)){
+        if(empty($user)){
             return redirect()->back();
         }
 
-        $users = $role->createUser();
+        $roles = $user->createRole();
 
-        return view('admin.roles.user-role.create', compact('role', 'users'));
+        return view('admin.usuario.user-role.create', compact('user', 'roles'));
     }
 
     public function storeUser(Request $request, $id){
-        $role = $this->dadosRole->find($id);
+        $user = $this->dadosUser->find($id);
 
-        if(empty($role)){
+        if(empty($user)){
             return redirect()->back();
         }
 
-        if(!empty($request->user)){
-            $role->users()->attach($request->user);
+        if(!empty($request->role)){
+            $user->roles()->attach($request->role);
             return redirect()
-                ->route('role.user', $role->id)
-                ->with('success', 'Permissões adicionada com sucesso');
+                ->route('user.role', $user->id)
+                ->with('success', 'Funções adicionada com sucesso');
         }else{
-            return redirect()->back()->with('error', 'Deve selecionar pelo uma permissão');;
+            return redirect()->back()->with('error', 'Deve selecionar pelo uma função');;
         }
 
     }
 
 
     public function searchUser(Request $request, $id){
-        $role = $this->dadosRole->find($id);
+        $user = $this->dadosUser->find($id);
 
-        $users = $role->searchUser($request->filtrar);
+        $roles = $user->searchUser($request->filtrar);
         $filtros = $request->except('_token');
 
-        return view('admin.roles.user-role.create', compact('role', 'users', 'filtros'));
+        return view('admin.usuario.user-role.create', compact('user', 'roles', 'filtros'));
     }
 
-    public function detachUser($idRole, $idUser){
+    public function detachUser($idUser, $idRole){
         $role = $this->dadosRole->find($idRole);
         $user = $this->dadosUser->find($idUser);
 
@@ -78,9 +78,9 @@ class UserRoleController extends Controller
             return redirect()->back();
         }
 
-        $role->users()->detach($user);
+        $user->roles()->detach($role);
         return redirect()
-                ->route('role.user', $role->id)
+                ->route('user.role', $user->id)
                 ->with('message', 'Permissões removida com sucesso');
     }
 }

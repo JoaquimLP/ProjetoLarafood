@@ -23,7 +23,7 @@
                 <input type="text" class="form-control mr-1" name="filtrar" value="{{$filtros['filtrar'] ?? ''}}" id="filtrar" placeholder="nome do usuario...">
                 <button type="submit" class="btn btn-dark">Buscar</button>
             </form>
-            
+
         </div>
         <div class="card-body">
             <table class="table table-condensed">
@@ -49,6 +49,7 @@
                             </td>
                             <td style="width: 250px">
                                 <a href="{{route('usuario.edit', $usuario->id)}}" class="btn btn-info">Edit</a>
+                                <a href="{{route('user.role',  $usuario->id)}}" class="btn btn-success"><i class="fas fa-user-tag"></i> Funções</a>
                             </td>
                         </tr>
                     @endforeach

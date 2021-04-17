@@ -47,7 +47,6 @@
                                     <a href="{{route('role.edit', $role->id)}}" class="btn btn-info">Edit</a>
                                     <a href="{{route('role.show',  $role->id)}}" class="btn btn-warning">Ver</a>
                                     <a href="{{route('role.permissao',  $role->id)}}" class="btn btn-secondary"><i class="fas fa-lock"></i></a>
-                                    <a href="{{route('role.user',  $role->id)}}" class="btn btn-success"><i class="fas fa-users"></i></a>
                                 </td>
                             </tr>
                         @endforeach
