@@ -9,19 +9,19 @@
             <a href="{{route('admin.home')}}">Home</a>
         </li>
         <li class="breadcrumb-item active">
-            <a href="{{route('perfil.index')}}">Perfil</a>
+            <a href="{{route('role.index')}}">Função</a>
         </li>
         <li class="breadcrumb-item active">
-            <a href="{{route('perfil.permissao', $perfil->id)}}">{{$perfil->nome}}</a>
+            <a href="{{route('role.permissao', $role->id)}}">{{$role->nome}}</a>
         </li>
     </ol>
-    <h1>Permissões para o perfil <br>{{$perfil->nome}} <a href="{{route('perfil.permissao.createPermissao', $perfil->id)}}" class="btn btn-primary float-right"><i class="fas fa-plus-square"></i> ADICIONAR PERMISSÃO</a></h1>
+    <h1>Permissões para o role <br>{{$role->nome}} <a href="{{route('role.permissao.createPermissao', $role->id)}}" class="btn btn-primary float-right"><i class="fas fa-plus-square"></i> ADICIONAR PERMISSÃO</a></h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-           <form action="{{route('perfil.search')}}" class="form form-inline" method="post">
+           <form action="{{route('role.search')}}" class="form form-inline" method="post">
                 @csrf
                 <input type="text" class="form-control mr-1" name="filtrar" value="{{$filtros['filtrar'] ?? ''}}" id="filtrar" placeholder="nome do plano...">
                 <button type="submit" class="btn btn-dark">Buscar</button>
@@ -47,14 +47,14 @@
                                     {{$permissao->descricao}}
                                 </td>
                                 <td style="width: 0px">
-                                    <a href="{{route('perfil.permissao.detachPermissao', [$perfil->id, $permissao->id])}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                    <a href="{{route('role.permissao.detachPermissao', [$role->id, $permissao->id])}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             @else
-                <h1>Não existe permissões candastrada para esse perfil</h1>
+                <h1>Não existe permissões candastrada para esse role</h1>
             @endif
             <div class="card-footer">
                 @if (isset($filtros))

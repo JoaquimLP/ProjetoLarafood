@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', "Planos disponivel para o perfil {$perfil->nome}")
+@section('title', "Permissões disponivel para a função {$role->nome}")
 
 @section('content_header')
     @include('includes.alert')
@@ -9,13 +9,13 @@
             <a href="{{route('admin.home')}}">Home</a>
         </li>
         <li class="breadcrumb-item active">
-            <a href="{{route('perfil.index')}}">Perfil</a>
+            <a href="{{route('role.index')}}">Perfil</a>
         </li>
         <li class="breadcrumb-item active">
-            <a href="{{route('perfil.plano', $perfil->id)}}">{{$perfil->nome}}</a>
+            <a href="{{route('role.permissao', $role->id)}}">{{$role->nome}}</a>
         </li>
         <li class="breadcrumb-item active">
-            <a href="{{route('perfil.plano.create', $perfil->id)}}">Adicionar</a>
+            <a href="{{route('role.permissao.createPermissao', $role->id)}}">Adicionar</a>
         </li>
     </ol>
 @stop
@@ -23,14 +23,14 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-           <form action="{{route('perfil.plano.store', $perfil->id)}}" class="form form-inline" method="post">
+           <form action="{{route('role.permissao.searchPermissao', $role->id)}}" class="form form-inline" method="post">
                 @csrf
                 <input type="text" class="form-control mr-1" name="filtrar" value="{{$filtros['filtrar'] ?? ''}}" id="filtrar" placeholder="nome do plano...">
                 <button type="submit" class="btn btn-dark">Buscar</button>
             </form>
         </div>
         <div class="card-body">
-            @if ($planos->count() != 0)
+            @if ($permissaos->count() != 0)
                 <table class="table table-condensed">
                     <thead>
                         <tr>
@@ -40,19 +40,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <form action="{{route('perfil.plano.store', $perfil->id)}}" method="post">
+                        <form action="{{route('role.permissao.storePermissao', $role->id)}}" method="post">
                             @csrf
                             @method('POST')
-                            @foreach ($planos as $plano)
+                            @foreach ($permissaos as $permissao)
                                 <tr>
                                     <td>
-                                        <input type="checkbox" name="plano[]" id="" value="{{$plano->id}}">
+                                        <input type="checkbox" name="permissao[]" id="" value="{{$permissao->id}}">
                                     </td>
                                     <td>
-                                        {{$plano->nome}}
+                                        {{$permissao->nome}}
                                     </td>
                                     <td>
-                                        {{$plano->descricao}}
+                                        {{$permissao->descricao}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -65,13 +65,13 @@
                     </tbody>
                 </table>
             @else
-                <h2>Todas as planos cadastrada no sistema já foram vinculado a esse perfil</h2>
+                <h2>Todas as permissões cadastrada no sistema já foram vinculado a esse role</h2>
             @endif
             <div class="card-footer">
                 @if (isset($filtros))
-                    {!!$planos->appends($filtros)->links()!!}
+                    {!!$permissaos->appends($filtros)->links()!!}
                 @else
-                    {!!$planos->links()!!}
+                    {!!$permissaos->links()!!}
                 @endif
             </div>
         </div>

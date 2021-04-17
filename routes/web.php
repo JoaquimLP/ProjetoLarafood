@@ -123,6 +123,20 @@ Route::prefix('admin')
      */
     Route::any('/role/search', 'Acl\RoleController@search')->name('role.search');
     Route::resource('/role', 'Acl\RoleController');
+
+    //Rotas de permissão e role
+    Route::get('role/{id}/permissao', 'Acl\PermissaoRoleController@listaPermissao')->name('role.permissao');
+    Route::get('role/{id}/permissao/create_permissao', 'Acl\PermissaoRoleController@createPermissao')->name('role.permissao.createPermissao');
+    Route::post('role/{id}/permissao/store_permissao', 'Acl\PermissaoRoleController@storePermissao')->name('role.permissao.storePermissao');
+    Route::any('role/{id}/permissao/search_permissao', 'Acl\PermissaoRoleController@searchPermissao')->name('role.permissao.searchPermissao');
+    Route::get('role/{id}/permissao/{idPermissao}/detach_permissao', 'Acl\PermissaoRoleController@detachPermissao')->name('role.permissao.detachPermissao');
+
+    //Rotas de permissão e role
+    Route::get('role/{id}/user', 'Acl\UserRoleController@listaUser')->name('role.user');
+    Route::get('role/{id}/user/create_user', 'Acl\UserRoleController@createUser')->name('role.user.create');
+    Route::post('role/{id}/user/store_user', 'Acl\UserRoleController@storeUser')->name('role.user.store');
+    Route::any('role/{id}/user/search_user', 'Acl\UserRoleController@searchUser')->name('role.user.search');
+    Route::get('role/{id}/user/{idUser}/detach_user', 'Acl\UserRoleController@detachUser')->name('role.user.detach');
 });
 
 
