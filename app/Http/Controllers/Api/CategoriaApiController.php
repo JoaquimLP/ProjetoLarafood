@@ -29,11 +29,10 @@ class CategoriaApiController extends Controller
 
     public function show(EmpresaFormRequest $request, $url)
     {
-        if($categoria = $this->categoria->getCategoriaByUrl($url)){
+        if($categoria = $this->categoria->getCategoriaByUrl($url))
             return new CategoriaResource($categoria);
-        }else{
-            return response()->json(['message' => 'Not Found'], 404);
-        }
+
+        return response()->json(['message' => 'Category Not Found'], 404);
     }
 
 

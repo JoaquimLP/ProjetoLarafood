@@ -23,3 +23,6 @@ Route::get('/empresa/{uuid}', 'Api\EmpresaApiController@show');
 
 Route::get('/categoria/{url}', 'Api\CategoriaApiController@show');
 Route::get('/categoria', 'Api\CategoriaApiController@getCategoriaByEmpresa');
+
+Route::get('/mesa/{url}', 'Api\MesaApiController@show');
+Route::get('/mesa', 'Api\MesaApiController@getMesaByEmpresa');
