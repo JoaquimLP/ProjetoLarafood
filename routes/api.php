@@ -18,14 +18,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/empresa', 'Api\EmpresaApiController@index');
-Route::get('/empresa/{uuid}', 'Api\EmpresaApiController@show');
+Route::group([
+    'prefix' => 'v1',
+    'namespace' => 'Api'
+    ],function () {
+            Route::get('/empresa', 'EmpresaApiController@index');
+            Route::get('/empresa/{uuid}', 'EmpresaApiController@show');
 
-Route::get('/categoria/{url}', 'Api\CategoriaApiController@show');
-Route::get('/categoria', 'Api\CategoriaApiController@getCategoriaByEmpresa');
+            Route::get('/categoria/{url}', 'CategoriaApiController@show');
+            Route::get('/categoria', 'CategoriaApiController@getCategoriaByEmpresa');
 
-Route::get('/mesa/{url}', 'Api\MesaApiController@show');
-Route::get('/mesa', 'Api\MesaApiController@getMesaByEmpresa');
+            Route::get('/mesa/{url}', 'MesaApiController@show');
+            Route::get('/mesa', 'MesaApiController@getMesaByEmpresa');
 
-Route::get('/produto/{flag}', 'Api\ProdutoApiController@show');
-Route::get('/produto', 'Api\ProdutoApiController@produtoByEmpresa');
+            Route::get('/produto/{flag}', 'ProdutoApiController@show');
+            Route::get('/produto', 'ProdutoApiController@produtoByEmpresa');
+    });
