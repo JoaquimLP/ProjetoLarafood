@@ -17,3 +17,20 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group([
+    'prefix' => 'v1',
+    'namespace' => 'Api'
+    ],function () {
+            Route::get('/empresa', 'EmpresaApiController@index');
+            Route::get('/empresa/{uuid}', 'EmpresaApiController@show');
+
+            Route::get('/categoria/{url}', 'CategoriaApiController@show');
+            Route::get('/categoria', 'CategoriaApiController@getCategoriaByEmpresa');
+
+            Route::get('/mesa/{url}', 'MesaApiController@show');
+            Route::get('/mesa', 'MesaApiController@getMesaByEmpresa');
+
+            Route::get('/produto/{flag}', 'ProdutoApiController@show');
+            Route::get('/produto', 'ProdutoApiController@produtoByEmpresa');
+    });
