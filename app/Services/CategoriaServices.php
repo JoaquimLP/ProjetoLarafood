@@ -22,4 +22,11 @@ class CategoriaServices
 
         return $this->categoria->getCategoriaByEmpresaId($empresa->id);
     }
+
+    public function getCategoriaByUrl($url)
+    {
+        //$empresa = $this->empresa->getEmpresaByUuid($uuid);
+
+        return $this->categoria->getCategoriaByUrl($url);
+    }
 }

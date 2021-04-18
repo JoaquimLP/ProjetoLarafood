@@ -33,4 +33,11 @@ class CategoriaRepository implements CategoriaRepositoryInterface
             ->get();
 
     }
+    public function getCategoriaByUrl($url)
+    {
+        return DB::table($this->table)
+            ->where('url', $url)
+            ->first();
+
+    }
 }
