@@ -16,17 +16,17 @@ class ProdutoServices
         $this->produto = $produto;
     }
 
-    public function getProdutoByEmpresaUuid($uuid)
+    public function getProdutoByEmpresaUuid($uuid, $categoria)
     {
         $empresa = $this->empresa->getEmpresaByUuid($uuid);
 
-        return $this->produto->getProdutoByEmpresaId($empresa->id);
+        return $this->produto->getProdutoByEmpresaId($empresa->id, $categoria);
     }
 
-  /*   public function getProdutoByUrl($url)
+    public function getProdutoByFlag($flag)
     {
         //$empresa = $this->empresa->getEmpresaByUuid($uuid);
 
-        return $this->produto->getProdutoByUrl($url);
-    } */
+        return $this->produto->getProdutoByFlag($flag);
+    }
 }

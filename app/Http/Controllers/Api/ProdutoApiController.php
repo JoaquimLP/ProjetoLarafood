@@ -19,10 +19,19 @@ class ProdutoApiController extends Controller
 
     public function produtoByEmpresa(EmpresaFormRequest $request)
     {
-        $produto = ProdutoResource::collection($this->produto->getProdutoByEmpresaUuid($request->token));
+        $categoria = $request->get('categoria', []);
+        $produto = ProdutoResource::collection($this->produto->getProdutoByEmpresaUuid($request->token, $categoria));
 
         return $produto;
 
-        
+
+    }
+
+    public function show(EmpresaFormRequest $request, $flag)
+    {
+        if($produto = $this->produto->getProdutoByFlag($flag))
+            return new ProdutoResource($produto);
+
+        return response()->json(['message' => 'Produto Not Found'], 404);
     }
 }
