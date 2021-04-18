@@ -26,3 +26,6 @@ Route::get('/categoria', 'Api\CategoriaApiController@getCategoriaByEmpresa');
 
 Route::get('/mesa/{url}', 'Api\MesaApiController@show');
 Route::get('/mesa', 'Api\MesaApiController@getMesaByEmpresa');
+
+Route::get('/produto/{url}', 'Api\ProdutoApiController@show');
+Route::get('/produto', 'Api\ProdutoApiController@produtoByEmpresa');

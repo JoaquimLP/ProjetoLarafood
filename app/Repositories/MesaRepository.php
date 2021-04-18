@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Mesa;
 use App\Repositories\Contracts\MesaRepositoryInterface;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class MesaRepository implements MesaRepositoryInterface
 {

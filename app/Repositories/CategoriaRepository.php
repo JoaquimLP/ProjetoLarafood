@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Categoria;
 use App\Repositories\Contracts\CategoriaRepositoryInterface;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class CategoriaRepository implements CategoriaRepositoryInterface
 {
