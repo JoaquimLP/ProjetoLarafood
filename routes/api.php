@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/empresa', 'Api\EmpresaApiController@index');
 Route::get('/empresa/{uuid}', 'Api\EmpresaApiController@show');
+
+Route::get('/empresa', 'Api\CategoriaApiController@getCategoriaByEmpresa');

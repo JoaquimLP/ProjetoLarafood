@@ -26,7 +26,7 @@ class EmpresaApiController extends Controller
 
     public function show($uuid)
     {
-        if($empresa = $this->empresaServices->getEmpresaByUuuid($uuid)){
+        if($empresa = $this->empresaServices->getCategoriaByUuid($uuid)){
             return new EmpresaResource($empresa);
         }else{
             return response()->json(['message' => 'Not Found'], 404);
