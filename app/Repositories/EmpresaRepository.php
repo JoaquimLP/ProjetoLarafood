@@ -19,7 +19,7 @@ class EmpresaRepository implements EmpresaRepositoryInterface
 
     }
 
-    public function getCategoriaByUuid(string $uuid)
+    public function getEmpresaByUuid(string $uuid)
     {
 
         return $this->entity->where('uuid', $uuid)->first();

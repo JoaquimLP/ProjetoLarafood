@@ -13,16 +13,24 @@ class CategoriaRepository implements CategoriaRepositoryInterface
     {
         $this->entity = $Categoria;
     }
-    public function getAllCategoria(int $page)
+
+    public function getCategoriaByEmpresaUuid($uuid)
     {
-        return $this->entity->paginate($page);
+
+        return $this->entity
+            ->join('empresas', 'empresa.id', '=', 'categorias.empresa_id')
+            ->where('uuid', $uuid)
+            ->select('categorias.*')
+            ->get();
 
     }
 
-    public function getCategoriaByUuuid(getCategoriaByEmpresaUuid)
+    public function getCategoriaByEmpresaId($empresa_id)
     {
 
-        return $this->entity->where('uuid', $uuid)->first();
+        return $this->entity
+            ->where('empresa_id', $empresa_id)
+            ->get();
 
     }
 }

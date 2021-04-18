@@ -19,9 +19,9 @@ Class EmpresaServices
         return $this->repository->getAllEmpresa($page);
     }
 
-    public function getCategoriaByUuid(string $uuid)
+    public function getEmpresaByUuid(string $uuid)
     {
-        return $this->repository->getCategoriaByUuid($uuid);
+        return $this->repository->getEmpresaByUuid($uuid);
     }
 
     public function make(Plano $plano, array $data)
