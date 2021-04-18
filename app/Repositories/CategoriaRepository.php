@@ -4,20 +4,21 @@ namespace App\Repositories;
 
 use App\Models\Categoria;
 use App\Repositories\Contracts\CategoriaRepositoryInterface;
+use DB;
 
 class CategoriaRepository implements CategoriaRepositoryInterface
 {
-    protected $entity;
+    protected $table;
 
-    public function __construct(Categoria $Categoria)
+    public function __construct()
     {
-        $this->entity = $Categoria;
+        $this->table = 'categorias';
     }
 
     public function getCategoriaByEmpresaUuid($uuid)
     {
 
-        return $this->entity
+        return DB::table($this->table)
             ->join('empresas', 'empresa.id', '=', 'categorias.empresa_id')
             ->where('uuid', $uuid)
             ->select('categorias.*')
@@ -27,8 +28,7 @@ class CategoriaRepository implements CategoriaRepositoryInterface
 
     public function getCategoriaByEmpresaId($empresa_id)
     {
-
-        return $this->entity
+        return DB::table($this->table)
             ->where('empresa_id', $empresa_id)
             ->get();
 
