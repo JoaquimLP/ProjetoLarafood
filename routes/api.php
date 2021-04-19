@@ -33,4 +33,6 @@ Route::group([
 
             Route::get('/produto/{flag}', 'ProdutoApiController@show');
             Route::get('/produto', 'ProdutoApiController@produtoByEmpresa');
+
+            Route::post('/cliente', 'ClienteController@store');
     });
