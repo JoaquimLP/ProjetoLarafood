@@ -17,6 +17,7 @@ class ClienteRepository implements ClienteRepositoryInterface
 
     public function createNewClient($dado)
     {
+        $dado['password'] = bcrypt($dado['password']);
         return $this->entity->create($dado);
     }
 
