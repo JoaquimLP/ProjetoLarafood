@@ -7,13 +7,13 @@ use phpDocumentor\Reflection\Types\Boolean;
 class ManagerEmpresa
 {
     public function getEmpresaIdentify(){
-        return auth()->user()->empresa_id;
+        return auth()->check() ? auth()->user()->empresa_id : '';
 
     }
 
-    public function getEmpresa(): Empresa
+    public function getEmpresa()
     {
-        return auth()->user()->empresa;
+        return auth()->check() ? auth()->user()->empresa_id : '';
     }
 
     public function idAmin(): bool
