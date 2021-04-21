@@ -38,7 +38,7 @@ Route::group([
             Route::post('/sanctum/token', 'Auth\AuthClienteController@auth');
 
             Route::post('/orders', 'OrderApiController@store');
-            Route::post('/orders/{identfy}', 'OrderApiController@show');
+            Route::get('/orders/{identfy}', 'OrderApiController@show');
 
     });
 
@@ -50,4 +50,6 @@ Route::group(
 ], function(){
     Route::get('/auth/me', 'Auth\AuthClienteController@me');
     Route::post('/auth/logout', 'Auth\AuthClienteController@logout');
+    Route::post('/auth/orders', 'OrderApiController@store');
+    Route::get('/auth/orders/my-orders', 'OrderApiController@myOrders');
 });

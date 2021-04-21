@@ -75,6 +75,19 @@ class OrderServices
         return (float) $total;
     }
 
+    public function getOrderByIdentify($identify)
+    {
+        return $this->order->getOrderByIdentify($identify);
+    }
+
+    public function orderByCliente()
+    {
+        $cliente = $this->getClienteId();
+
+        return $this->order->orderByCliente($cliente);
+
+    }
+
     private function getEmpresa($uuid)
     {
         $empresa = $this->empresa->getEmpresaByUuid($uuid);

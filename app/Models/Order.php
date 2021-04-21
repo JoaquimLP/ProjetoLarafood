@@ -22,11 +22,11 @@ class Order extends Model
 
     public function cliente(){
         // dd($this->hasOne(Empresa::class,  'cliente_id'));
-         return $this->belongsTo(Cliente::class,  'id', 'cliente_id');
+         return $this->belongsTo(Cliente::class);
     }
     public function mesa(){
         // dd($this->hasOne(Empresa::class,  'mesa_id'));
-         return $this->belongsTo(Mesa::class,  'id', 'mesa_id');
+         return $this->belongsTo(Mesa::class);
     }
 
     public function produtos()

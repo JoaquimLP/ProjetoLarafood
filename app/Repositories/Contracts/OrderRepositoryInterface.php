@@ -9,4 +9,5 @@ interface OrderRepositoryInterface
     );
     public function getOrderByIdentify($identify);
     public function registerProdutoOrder($order_id, $produtos = []);
+    public function orderByCliente($cliente_id);
 }
