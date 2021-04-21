@@ -12,31 +12,34 @@ use App\Repositories\OrderRepository;
 
 class OrderServices
 {
-    protected $order, $empresa, $mesa, $cliente;
+    protected $order, $empresa, $mesa, $cliente, $produto;
 
     public function __construct(
         OrderRepository $order, EmpresaRepositoryInterface $empresa, MesaRepositoryInterface $mesa,
-        ClienteRepositoryInterface $cliente
+        ClienteRepositoryInterface $cliente, ProdutoRepositoryInterface $produto
     )
     {
         $this->order = $order;
         $this->empresa = $empresa;
         $this->mesa = $mesa;
         $this->cliente = $cliente;
+        $this->produto = $produto;
     }
 
     public function createNewOrder($order = [])
     {
+        $produtoOrder = $this->getProduto($order['produto'] ?? []);
         $identify = $this->getIdentifyOder(8);
-        $total = $this->calcTotalOrder([]);
+        $total = $this->calcTotalOrder($produtoOrder);
         $status = 'open';
         $empresa_id = $this->getEmpresa($order['token']);
         $cliente_id = $this->getClienteId();
-        $mesa_id = $this->getMesa($order['mesa']);
+        $mesa_id = $this->getMesa($order['mesa'] ?? null);
+        $comentario = $order['comentario'] ?? null;
 
-        $order = $this->order->createNewOrder($identify, $total, $status, $empresa_id, $cliente_id , $mesa_id);
-
-        //return $this->order->createNewOrder();
+        $order = $this->order->createNewOrder($identify, $total, $status, $empresa_id, $cliente_id , $mesa_id, $comentario );
+        $this->order->registerProdutoOrder($order->id, $produtoOrder);
+        return $order;
 
 
     }
@@ -55,14 +58,21 @@ class OrderServices
         $characters = $smallLetters.$numbers;
 
         $identify = substr(str_shuffle($characters), 0, $qtyCaraceters);
-
+        $existIdentify = $this->order->getOrderByIdentify($identify);
+        if($existIdentify){
+            $this->getIdentifyOder($qtyCaraceters + 1);
+        }
         return $identify;
 
     }
 
-    public function calcTotalOrder($produto = []): float
+    public function calcTotalOrder($produtos = []): float
     {
-        return (float) 90;
+        $total = 0;
+        foreach ($produtos as $produto) {
+           $total += ($produto['preco'] * $produto['qtd']);
+        }
+        return (float) $total;
     }
 
     private function getEmpresa($uuid)
@@ -79,11 +89,28 @@ class OrderServices
             return $mesa->id;
         }
 
-        return "";
+        return null;
     }
 
     private function getClienteId()
     {
-        return auth()->check() ? auth()->user()->id : "";
+        return auth()->check() ? auth()->user()->id : null;
+    }
+
+    private function getProduto($produto = []): array
+    {
+        $dadosProduto = [];
+        foreach ($produto as $value) {
+            $uuid = $value['identify'];
+            $qtd = $value['qtd'];
+            $produto = $this->produto->getProdutoByUuid($uuid);
+            array_push($dadosProduto,
+                [
+                    'produto_id' => $produto->id,
+                    'preco' => $produto->preco,
+                    'qtd' => $qtd
+                ]);
+        }
+        return $dadosProduto;
     }
 }

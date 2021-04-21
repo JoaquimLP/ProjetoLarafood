@@ -27,6 +27,9 @@ class ApiStoreOrder extends FormRequest
             'token' => ['required', 'exists:empresas,uuid'],
             'mesa' => ['nullable', 'exists:mesas,uuid'],
             'comment' => ['nullable', 'max:1000'],
+            'produto' => ['required'],
+            'produto.*.identify' => ['required', 'exists:produtos,uuid'],
+            'produto.*.qtd' => ['required', 'integer'],
         ];
     }
 }

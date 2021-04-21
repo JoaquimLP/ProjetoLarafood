@@ -15,7 +15,8 @@ class OrderResouce extends JsonResource
     public function toArray($request)
     {
         return [
-            'identify' => $this->identify
+            'identify' => $this->identify,
+            'total' => $this->total
         ];
     }
 }
