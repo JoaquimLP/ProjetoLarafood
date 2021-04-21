@@ -16,6 +16,7 @@ class MesaObserver
     public function creating(Mesa $mesa)
     {
         $mesa->url = Str::kebab($mesa->nome);
+        $mesa->uuid = Str::uuid();
     }
 
     /**
