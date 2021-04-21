@@ -17,6 +17,7 @@ class CreateProdutosTable extends Migration
             $table->id();
             $table->string('titulo')->unique();
             $table->string('flag')->unique();
+            $table->uuid('uuid');
             $table->double('preco', 10,2);
             $table->text('descricao');
             $table->string('image');

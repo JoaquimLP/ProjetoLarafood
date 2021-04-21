@@ -16,6 +16,7 @@ class CreateCategoriasTable extends Migration
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('empresa_id');
+            $table->uuid('uuid');
             $table->string('nome')->unique();
             $table->string('url')->unique();
             $table->string('descricao')->nullable();
