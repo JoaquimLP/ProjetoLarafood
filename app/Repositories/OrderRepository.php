@@ -15,14 +15,14 @@ class OrderRepository implements OrderRepositoryInterface
         $this->entity = $order;
     }
 
-    public function createNewOrder($identify, $total, $status, $empresa_id, $cliente = "", $mesa_id = "")
+    public function createNewOrder($identify, $total, $status, $empresa_id, $cliente_id = "", $mesa_id = "")
     {
 
     }
 
     public function getOrderByIdentify($identify)
     {
-        
+
     }
 
 

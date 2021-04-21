@@ -24,7 +24,9 @@ class ApiStoreOrder extends FormRequest
     public function rules()
     {
         return [
-            //
+            'token' => ['required', 'exists:empresas,uuid'],
+            'mesa' => ['nullable', 'exists:mesas,uuid'],
+            'comment' => ['nullable', 'max:1000'],
         ];
     }
 }
