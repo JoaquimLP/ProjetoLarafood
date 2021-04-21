@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Models\Cliente;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* Route::get('/', function () {
-    return view('welcome');
-}); */
+Route::get('teste', function ()
+{
+    $client = Cliente::first();
+    $token = $client->createToken("Token-teste");
+    dd($token->plainTextToken);
+});
+
 Auth::routes();
 //Route::get('/', 'Admin\PlanoController@home')->name('admin.home');
 Route::get('/', 'Site\HomeController@index')->name('site');

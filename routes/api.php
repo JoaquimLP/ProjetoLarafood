@@ -33,4 +33,18 @@ Route::group([
 
             Route::get('/produto/{flag}', 'ProdutoApiController@show');
             Route::get('/produto', 'ProdutoApiController@produtoByEmpresa');
+
+            Route::post('/cliente', 'ClienteController@store');
+            Route::post('/sanctum/token', 'Auth\AuthClienteController@auth');
+
     });
+
+Route::group(
+[
+    'middleware' => ['auth:sanctum'],
+    'prefix' => 'v1',
+    'namespace' => 'Api'
+], function(){
+    Route::get('/auth/me', 'Auth\AuthClienteController@me');
+    Route::post('/auth/logout', 'Auth\AuthClienteController@logout');
+});
