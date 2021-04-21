@@ -2,27 +2,26 @@
 
 namespace App\Services;
 
-use App\Repositories\AvaliacaoRepository;
+use App\Repositories\Contracts\AvaliacaoRepositoryInterface;
 use App\Repositories\Contracts\OrderRepositoryInterface;
-use GuzzleHttp\Psr7\Request;
 
 class AvaliacaoServices
 {
     protected $avaliacao;
     protected $order;
 
-    public function __construct(AvaliacaoRepository $avaliacao, OrderRepositoryInterface $order)
+    public function __construct(AvaliacaoRepositoryInterface $avaliacao, OrderRepositoryInterface $order)
     {
         $this->avaliacao = $avaliacao;
         $this->order = $order;
     }
 
-    public function newAvaliacaoOrder($identify)
+    public function newAvaliacaoOrder($identify, $data = [])
     {
-        $order_id = $this->order->getOrderByIdentify($identify);
+        $order = $this->order->getOrderByIdentify($identify);
         $cliente_id = $this->getClienteId();
 
-        return $this->avaliacao->newAvaliacaoOrder($order_id, $cliente_id);
+        return $this->avaliacao->newAvaliacaoOrder($order->id, $cliente_id, $data);
     }
 
     public function getAvaliacaoByOrder($order_id)

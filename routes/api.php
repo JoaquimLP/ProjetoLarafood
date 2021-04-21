@@ -50,6 +50,9 @@ Route::group(
 ], function(){
     Route::get('/auth/me', 'Auth\AuthClienteController@me');
     Route::post('/auth/logout', 'Auth\AuthClienteController@logout');
+
     Route::post('/auth/orders', 'OrderApiController@store');
     Route::get('/auth/orders/my-orders', 'OrderApiController@myOrders');
+
+    Route::post('/auth/{identify}/avaliacao', 'AvaliacaoController@store');
 });
