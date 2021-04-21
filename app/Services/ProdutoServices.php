@@ -23,10 +23,10 @@ class ProdutoServices
         return $this->produto->getProdutoByEmpresaId($empresa->id, $categoria);
     }
 
-    public function getProdutoByFlag($flag)
+    public function getProdutoByUuid($produto_id)
     {
         //$empresa = $this->empresa->getEmpresaByUuid($uuid);
 
-        return $this->produto->getProdutoByFlag($flag);
+        return $this->produto->getProdutoByUuid($produto_id);
     }
 }

@@ -25,13 +25,13 @@ Route::group([
             Route::get('/empresa', 'EmpresaApiController@index');
             Route::get('/empresa/{uuid}', 'EmpresaApiController@show');
 
-            Route::get('/categoria/{url}', 'CategoriaApiController@show');
+            Route::get('/categoria/{categoria_id}', 'CategoriaApiController@show');
             Route::get('/categoria', 'CategoriaApiController@getCategoriaByEmpresa');
 
-            Route::get('/mesa/{url}', 'MesaApiController@show');
+            Route::get('/mesa/{mesa_id}', 'MesaApiController@show');
             Route::get('/mesa', 'MesaApiController@getMesaByEmpresa');
 
-            Route::get('/produto/{flag}', 'ProdutoApiController@show');
+            Route::get('/produto/{produto_id}', 'ProdutoApiController@show');
             Route::get('/produto', 'ProdutoApiController@produtoByEmpresa');
 
             Route::post('/cliente', 'ClienteController@store');

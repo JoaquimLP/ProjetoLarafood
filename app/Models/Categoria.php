@@ -9,14 +9,14 @@ use App\Empresa\Traits\EmpresaTraits;
 class Categoria extends Model
 {
     use EmpresaTraits;
-    protected $fillable = ['empresa_id', 'nome', 'url', 'descricao'];
+    protected $fillable = ['empresa_id', 'uuid', 'nome', 'url', 'descricao'];
 
      /**
      * Get Categorias
      */
 
     public function produtos(){
-        
+
         return $this->belongsToMany(Produto::class, 'categoria_produto');
     }
 }

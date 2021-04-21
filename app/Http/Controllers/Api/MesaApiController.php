@@ -22,9 +22,9 @@ class MesaApiController extends Controller
         return MesaResource::collection($this->mesa->getMesaByEmpresaUuid($request->token));
     }
 
-    public function show(EmpresaFormRequest $request, $url)
+    public function show(EmpresaFormRequest $request, $mesa_id)
     {
-        if($mesa = $this->mesa->getMesaByUrl($url))
+        if($mesa = $this->mesa->getMesaByUuid($mesa_id))
             return new MesaResource($mesa);
 
         return response()->json(['message' => 'Mesa Not Found'], 404);

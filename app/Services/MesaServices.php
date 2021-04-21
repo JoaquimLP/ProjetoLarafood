@@ -23,10 +23,10 @@ class MesaServices
         return $this->mesa->getMesaByEmpresaId($empresa->id);
     }
 
-    public function getMesaByUrl($url)
+    public function getMesaByUuid($uuid)
     {
         //$empresa = $this->empresa->getEmpresaByUuid($uuid);
 
-        return $this->mesa->getMesaByUrl($url);
+        return $this->mesa->getMesaByUuid($uuid);
     }
 }

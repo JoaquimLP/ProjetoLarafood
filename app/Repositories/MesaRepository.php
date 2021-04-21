@@ -33,10 +33,10 @@ class MesaRepository implements MesaRepositoryInterface
             ->get();
 
     }
-    public function getMesaByUrl($url)
+    public function getMesaByUuid($uuid)
     {
         return DB::table($this->table)
-            ->where('url', $url)
+            ->where('uuid', $uuid)
             ->first();
 
     }

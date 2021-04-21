@@ -27,9 +27,9 @@ class ProdutoApiController extends Controller
 
     }
 
-    public function show(EmpresaFormRequest $request, $flag)
+    public function show(EmpresaFormRequest $request, $produto_id)
     {
-        if($produto = $this->produto->getProdutoByFlag($flag))
+        if($produto = $this->produto->getProdutoByUuid($produto_id))
             return new ProdutoResource($produto);
 
         return response()->json(['message' => 'Produto Not Found'], 404);
