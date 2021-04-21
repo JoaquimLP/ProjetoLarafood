@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Repositories\AvaliacaoRepository;
 use App\Repositories\CategoriaRepository;
 use App\Repositories\ClienteRepository;
+use App\Repositories\Contracts\AvaliacaoRepositoryInterface;
 use App\Repositories\Contracts\CategoriaRepositoryInterface;
 use App\Repositories\Contracts\ClienteRepositoryInterface;
 use App\Repositories\Contracts\EmpresaRepositoryInterface;
@@ -48,6 +50,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
            OrderRepositoryInterface::class,
            OrderRepository::class
+        );
+        $this->app->bind(
+           AvaliacaoRepositoryInterface::class,
+           AvaliacaoRepository::class
         );
     }
 

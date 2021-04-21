@@ -33,4 +33,9 @@ class Order extends Model
     {
         return $this->belongsToMany(Produto::class, 'orders_produto');
     }
+
+    public function avaliacao()
+    {
+        return $this->hasMany(Avaliacao::class);
+    }
 }
