@@ -33,10 +33,10 @@ class CategoriaRepository implements CategoriaRepositoryInterface
             ->get();
 
     }
-    public function getCategoriaByUrl($url)
+    public function getCategoriaByUuid($uuid)
     {
         return DB::table($this->table)
-            ->where('url', $url)
+            ->where('uuid', $uuid)
             ->first();
 
     }

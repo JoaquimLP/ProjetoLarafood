@@ -7,16 +7,16 @@ use App\Empresa\Traits\EmpresaTraits;
 use Illuminate\Database\Eloquent\Model;
 
 class Produto extends Model
-{ 
+{
     use EmpresaTraits;
-    protected $fillable = ['titulo', 'flag', 'preco', 'descricao', 'image'];
+    protected $fillable = ['titulo', 'flag', 'uuid', 'preco', 'descricao', 'image'];
 
     /**
      * Get Categorias
      */
 
     public function categorias(){
-        
+
         return $this->belongsToMany(Categoria::class, 'categoria_produto');
     }
 
@@ -24,7 +24,7 @@ class Produto extends Model
      * Permissão não vinculada a esse categoria
      */
     public function createCategoria(){
-        
+
         $categoria = Categoria::whereNotIn('id', function($query){
             $query->select('categoria_produto.categoria_id');
             $query->from('categoria_produto');
@@ -39,7 +39,7 @@ class Produto extends Model
      * Pesquisa Permissão não vinculada a esse categoria
      */
     public function searchCategoria($filtro = null){
-        
+
         $categoria = Categoria::where(function ($queryFilter) use ($filtro){
                 $queryFilter->where('categorias.nome', 'LIKE', "%{$filtro}%");
             })->whereNotIn('id', function($query){

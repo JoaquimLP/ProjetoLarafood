@@ -27,9 +27,9 @@ class CategoriaApiController extends Controller
         return CategoriaResource::collection($this->categoria->getCategoriaByEmpresaUuid($request->token));
     }
 
-    public function show(EmpresaFormRequest $request, $url)
+    public function show(EmpresaFormRequest $request, $categoria_id)
     {
-        if($categoria = $this->categoria->getCategoriaByUrl($url))
+        if($categoria = $this->categoria->getCategoriaByUuid($categoria_id))
             return new CategoriaResource($categoria);
 
         return response()->json(['message' => 'Category Not Found'], 404);

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mesa extends Model
 {
-    protected $fillable = ['empresa_id', 'nome', 'url', 'descricao'];
+    protected $fillable = ['empresa_id', 'uuid', 'nome', 'url', 'descricao'];
 }
