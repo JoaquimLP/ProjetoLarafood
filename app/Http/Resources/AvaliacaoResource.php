@@ -17,7 +17,7 @@ class AvaliacaoResource extends JsonResource
         return [
             'stars' => $this->stars,
             'comentario' => $this->comentario,
-            'order' => $this->order_id ? new OrderResouce($this->order) : "",
+            //'order' => $this->order_id ? new OrderResouce($this->order) : "",
         ];
     }
 }

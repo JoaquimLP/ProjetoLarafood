@@ -17,7 +17,7 @@ class Order extends Model
 
     public function empresa(){
         // dd($this->hasOne(Empresa::class,  'empresa_id'));
-         return $this->belongsTo(Empresa::class,  'id', 'empresa_id');
+         return $this->belongsTo(Empresa::class);
     }
 
     public function cliente(){
