@@ -25,8 +25,8 @@ Route::group([
             Route::get('/empresa', 'EmpresaApiController@index');
             Route::get('/empresa/{uuid}', 'EmpresaApiController@show');
 
-            Route::get('/categoria/{categoria_id}', 'CategoriaApiController@show');
             Route::get('/categoria', 'CategoriaApiController@getCategoriaByEmpresa');
+            Route::get('/categoria/{categoria_id}', 'CategoriaApiController@show');
 
             Route::get('/mesa/{mesa_id}', 'MesaApiController@show');
             Route::get('/mesa', 'MesaApiController@getMesaByEmpresa');

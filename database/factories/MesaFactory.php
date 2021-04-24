@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Categoria;
 use App\Models\Empresa;
+use App\Models\Mesa;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CategoriaFactory extends Factory
+class MesaFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Categoria::class;
+    protected $model = Mesa::class;
 
     /**
      * Define the model's default state.
@@ -23,6 +23,7 @@ class CategoriaFactory extends Factory
     public function definition()
     {
         $empresa = Empresa::factory()->create();
+    
         return [
             'empresa_id' => $empresa->id,
             'nome' => $this->faker->unique()->name,

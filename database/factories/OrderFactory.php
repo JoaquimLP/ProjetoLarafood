@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Empresa;
 use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -22,8 +23,9 @@ class OrderFactory extends Factory
      */
     public function definition()
     {
+        $empresa = Empresa::factory()->create();
         return [
-            'empresa_id' => factory(Empresa::class),
+            'empresa_id' => $empresa->id,
             'identify' => uniqid() . Str::random(10),
             'total' => 80.80,
             'status' => 'open',

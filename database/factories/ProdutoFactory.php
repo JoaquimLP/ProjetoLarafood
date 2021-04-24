@@ -22,10 +22,11 @@ class ProdutoFactory extends Factory
      */
     public function definition()
     {
+        $empresa = Empresa::factory()->create();
         return [
-            'empresa_id' => factory(Empresa::class),
+            'empresa_id' => $empresa->id,
             'titulo' => $this->faker->unique()->name,
-            'preco' => 89.20,
+            'preco' => 12.9,
             'descricao' => $this->faker->sentence,
             'image' => "pizza.png"
         ];
