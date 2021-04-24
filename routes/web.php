@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('teste', function ()
 {
     $client = Cliente::first();
     $token = $client->createToken("Token-teste");
     dd($token->plainTextToken);
 });
-
+ */
 Auth::routes();
 //Route::get('/', 'Admin\PlanoController@home')->name('admin.home');
 Route::get('/', 'Site\HomeController@index')->name('site');
@@ -118,6 +118,7 @@ Route::prefix('admin')
      * Rotas de Mesa
      */
     Route::any('/mesa/search', 'MesaController@search')->name('mesa.search');
+    Route::get('/mesa/qrcode/{id}/teste', 'MesaController@qrcode')->name('mesa.qrcode');
     Route::resource('/mesa', 'MesaController');
 
     /**

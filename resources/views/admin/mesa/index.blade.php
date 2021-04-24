@@ -48,6 +48,9 @@
                                 {{$mesa->descricao}}
                             </td>
                             <td style="width: 250px">
+                                <a href="{{route('mesa.qrcode', $mesa->uuid)}}" class="btn btn-success" target="_blank">
+                                    <i class="fas fa-qrcode"></i>
+                                </a>
                                 <a href="{{route('mesa.edit', $mesa->id)}}" class="btn btn-info">Edit</a>
                                 <a href="{{route('mesa.show', $mesa->id)}}" class="btn btn-success">Ver</a>
                             </td>

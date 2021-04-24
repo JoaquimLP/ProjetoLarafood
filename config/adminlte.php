@@ -237,6 +237,12 @@ return [
             'icon' => 'fas fa-home'
         ],
         [
+            'text' => 'Empresas',
+            'url'  => 'admin/empresa',
+            'icon' => 'fas fa-building',
+            'can' => 'Empresas'
+        ],
+        [
             'text' => 'Planos',
             'url'  => 'admin/planos',
             'icon' => 'fas fa-list-ul',
@@ -247,6 +253,12 @@ return [
             'url'  => 'admin/perfil',
             'icon' => 'fas fa-user-circle',
             'can' => 'Perfis'
+        ],
+        [
+            'text' => 'Funções',
+            'url'  => 'admin/role',
+            'icon' => 'fas fa-user-tag',
+            'can' => 'Função'
         ],
         [
             'text' => 'Permissão',
@@ -277,18 +289,6 @@ return [
             'url'  => 'admin/mesa',
             'icon' => 'fas fa-table',
             'can' => 'Mesas'
-        ],
-        [
-            'text' => 'Empresas',
-            'url'  => 'admin/empresa',
-            'icon' => 'fas fa-building',
-            'can' => 'Empresas'
-        ],
-        [
-            'text' => 'Funções',
-            'url'  => 'admin/role',
-            'icon' => 'fas fa-user-tag',
-            'can' => 'Empresas'
         ],
     ],
 

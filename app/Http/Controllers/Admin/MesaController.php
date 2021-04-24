@@ -140,4 +140,21 @@ class MesaController extends Controller
 
         return view('admin.mesa.index', compact('mesas', 'filtros'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function qrcode($uuid)
+    {
+        $mesa = $this->dadosMesa->where('uuid',$uuid)->first();
+        $empresa = auth()->user()->empresa;
+        if(!$mesa){
+            return redirect()->back();
+        }
+        $uri = env('URI_CLIENT') . "/{$empresa->uuid}/{$mesa->uuid}";
+        return view('admin.mesa.qrcode', compact('uri'));
+    }
 }
