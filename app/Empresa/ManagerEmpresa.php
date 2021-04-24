@@ -7,6 +7,7 @@ use phpDocumentor\Reflection\Types\Boolean;
 class ManagerEmpresa
 {
     public function getEmpresaIdentify(){
+        //$user = auth()->check() ? auth()->user()->empresa_id : '';
         return auth()->check() ? auth()->user()->empresa_id : '';
 
     }

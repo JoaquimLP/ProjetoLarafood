@@ -23,7 +23,7 @@
                 <input type="text" class="form-control mr-1" name="filtrar" value="{{$filtros['filtrar'] ?? ''}}" id="filtrar" placeholder="nome do categoria...">
                 <button type="submit" class="btn btn-dark">Buscar</button>
             </form>
-            
+
         </div>
         <div class="card-body">
             <table class="table table-condensed">

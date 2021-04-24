@@ -23,7 +23,7 @@ class MesaController extends Controller
      */
     public function index()
     {
-        $mesas = $this->dadosMesa->where('empresa_id', auth()->user()->empresa_id)->paginate();
+        $mesas = $this->dadosMesa->paginate();
         return view('admin.mesa.index', compact('mesas'));
     }
 
@@ -45,9 +45,7 @@ class MesaController extends Controller
      */
     public function store(StoreUpdateMesaRequest $request)
     {
-        $empresa = auth()->user()->empresa;
         $data = $request->all();
-        $data['empresa_id'] = $empresa->id;
         $this->dadosMesa->create($data);
         return redirect()->route('mesa.index')->with('success', 'Mesa cadastrada com sucesso..');
     }

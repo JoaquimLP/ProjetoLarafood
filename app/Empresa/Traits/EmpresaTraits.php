@@ -8,7 +8,7 @@ use App\Empresa\Scopes\EmpresaScope;
 trait EmpresaTraits
 {
 
-    
+
      /**
      * The "booted" method of the model.
      *
@@ -17,8 +17,10 @@ trait EmpresaTraits
     protected static function booted()
     {
         parent::boot();
-        static::observe(EmpresaObserver::class);
+       $static = static::observe(EmpresaObserver::class);
 
-        static::addGlobalScope(new EmpresaScope);
+       if ($static != null) {
+            $static = static::addGlobalScope(new EmpresaScope);
+       }
     }
 }

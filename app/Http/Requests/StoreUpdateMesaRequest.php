@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UniqueEmpresa;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUpdateMesaRequest extends FormRequest
@@ -25,7 +26,13 @@ class StoreUpdateMesaRequest extends FormRequest
     {
         $id = $this->segment(3);
         return [
-            'nome' => "required|min:3|max:150|unique:mesas,nome,{$id},id",
+            //'nome' => "required|min:3|max:150|unique:mesas,nome,{$id},id",
+            'nome' => [
+                "required",
+                "min:3",
+                "max:150",
+                new UniqueEmpresa('mesas', $id, 'id'),
+            ],
             'descricao' => "required|min:3|max:150",
         ];
     }
