@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Perfil extends Model
 {
+    use HasFactory;
+    
     protected $fillable = ['nome', 'descricao'];
 
     public function  search($filtro = null){
@@ -19,7 +22,7 @@ class Perfil extends Model
      */
 
     public function permissaos(){
-        
+
         return $this->belongsToMany(Permissao::class, 'permissao_perfil');
     }
 
@@ -28,7 +31,7 @@ class Perfil extends Model
      */
 
     public function planos(){
-        
+
         return $this->belongsToMany(Plano::class, 'plano_perfil');
     }
 
@@ -36,7 +39,7 @@ class Perfil extends Model
      * Permissão não vinculada a esse perfil
      */
     public function createPermissao(){
-        
+
         $permissao = Permissao::whereNotIn('id', function($query){
             $query->select('permissao_perfil.permissao_id');
             $query->from('permissao_perfil');
@@ -51,7 +54,7 @@ class Perfil extends Model
      * Pesquisa Permissão não vinculada a esse perfil
      */
     public function searchPermissao($filtro = null){
-        
+
         $permissao = Permissao::where(function ($queryFilter) use ($filtro){
                 $queryFilter->where('permissaos.nome', 'LIKE', "%{$filtro}%");
             })->whereNotIn('id', function($query){
