@@ -2,15 +2,19 @@
 
 namespace App\Providers;
 
+use App\Repositories\AvaliacaoRepository;
 use App\Repositories\CategoriaRepository;
 use App\Repositories\ClienteRepository;
+use App\Repositories\Contracts\AvaliacaoRepositoryInterface;
 use App\Repositories\Contracts\CategoriaRepositoryInterface;
 use App\Repositories\Contracts\ClienteRepositoryInterface;
 use App\Repositories\Contracts\EmpresaRepositoryInterface;
 use App\Repositories\Contracts\MesaRepositoryInterface;
+use App\Repositories\Contracts\OrderRepositoryInterface;
 use App\Repositories\Contracts\ProdutoRepositoryInterface;
 use App\Repositories\EmpresaRepository;
 use App\Repositories\MesaRepository;
+use App\Repositories\OrderRepository;
 use App\Repositories\ProdutoRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -42,6 +46,14 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
            ClienteRepositoryInterface::class,
            ClienteRepository::class
+        );
+        $this->app->bind(
+           OrderRepositoryInterface::class,
+           OrderRepository::class
+        );
+        $this->app->bind(
+           AvaliacaoRepositoryInterface::class,
+           AvaliacaoRepository::class
         );
     }
 

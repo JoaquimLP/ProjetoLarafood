@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Empresa extends Model
 {
+    use HasFactory;
     protected $fillable = ['uuid', 'cnpj', 'plano_id', 'nome', 'url','email', 'logo', 'data_inscriacao', 'data_expiracao'];
 
     public function usuarios(){

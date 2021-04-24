@@ -18,6 +18,9 @@ class EmpresaScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('empresa_id', app(ManagerEmpresa::class)->getEmpresaIdentify());
+        $empresa = app(ManagerEmpresa::class)->getEmpresaIdentify();
+
+        if($empresa)
+            $builder->where('empresa_id', );
     }
 }
