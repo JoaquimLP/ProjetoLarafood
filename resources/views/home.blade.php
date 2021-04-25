@@ -60,19 +60,23 @@
             </div>
             <!-- /.info-box -->
         </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon">
-                    <i class="fas fa-building"></i>
-                </span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Empresas</span>
-                    <span class="info-box-number">{{$totEmpresa}}</span>
+
+        @admin()
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon">
+                        <i class="fas fa-building"></i>
+                    </span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Empresas</span>
+                        <span class="info-box-number">{{$totEmpresa}}</span>
+                    </div>
+                    <!-- /.info-box-content -->
                 </div>
-                <!-- /.info-box-content -->
+                <!-- /.info-box -->
             </div>
-            <!-- /.info-box -->
-        </div>
+        @endadmin
+        @admin()
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon">
@@ -86,6 +90,7 @@
             </div>
             <!-- /.info-box -->
         </div>
+        @endadmin
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon">
@@ -99,6 +104,7 @@
             </div>
             <!-- /.info-box -->
         </div>
+        @admin()
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon">
@@ -112,6 +118,8 @@
             </div>
             <!-- /.info-box -->
         </div>
+        @endadmin
+        @admin()
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon">
@@ -125,6 +133,7 @@
             </div>
             <!-- /.info-box -->
         </div>
+        @endadmin
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon">

@@ -15,6 +15,7 @@ use App\Observers\CategoriaObserver;
 use App\Observers\ClienteObserver;
 use App\Observers\MesaObserver;
 use App\Observers\ProdutoObserve;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -41,5 +42,15 @@ class AppServiceProvider extends ServiceProvider
         Produto::observe(ProdutoObserve::class);
         Mesa::observe(MesaObserver::class);
         Cliente::observe(ClienteObserver::class);
+
+        /**
+         * Customizar os If do blade
+         */
+
+        Blade::if('admin', function () {
+            $user = auth()->user();
+
+            return $user->isAdmin();
+        });
     }
 }

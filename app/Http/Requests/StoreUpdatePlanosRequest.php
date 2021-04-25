@@ -24,10 +24,10 @@ class StoreUpdatePlanosRequest extends FormRequest
     public function rules()
     {
         $id = $this->segment(3);
-        
+
         return [
             'nome' => "required|min:3|max:150|unique:planos,nome,{$id},id",
-            'preco' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'preco' => 'required',
             'descricao' => 'nullable|min:3|max:150'
         ];
     }

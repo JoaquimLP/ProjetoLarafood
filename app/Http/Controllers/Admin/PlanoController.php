@@ -29,7 +29,10 @@ class PlanoController extends Controller
 
     public function store(StoreUpdatePlanosRequest $request){
 
-        $this->repositorio->create($request->all());
+        $data = $request->all();
+        $data['preco'] = str_replace(['.', ','], ['', '.'], $data['preco']);
+
+        $this->repositorio->create($data);
         return redirect()->route('plano.index');
     }
 
@@ -60,6 +63,8 @@ class PlanoController extends Controller
         if (empty($plano)) {
             return redirect()->back();
         }
+        $data = $request->all();
+        $data['preco'] = str_replace(['.', ','], ['', '.'], $data['preco']);
         $plano->update($request->all());
         return redirect()->route('plano.index');
 

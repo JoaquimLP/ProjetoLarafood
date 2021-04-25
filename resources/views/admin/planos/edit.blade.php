@@ -18,3 +18,10 @@
     </div>
     @include('includes.alert')
 @stop
+@push('scripts')
+<script>
+    $(document).ready(function($){
+        $('#_preco').mask('#.###,00', {reverse: true});
+    });
+</script>
+@endpush

@@ -12,12 +12,11 @@ trait UserTrait
         $permissionsPlano = $this->permissionsPlanos();
         $permissionsRoles = $this->permissionsRole();
         $permissions = [];
-
         foreach ($permissionsRoles as $permissionsRole) {
             if (in_array($permissionsRole, $permissionsPlano))
             {
                 array_push($permissions, $permissionsRole);
-           }
+            }
         }
         return $permissions;
     }

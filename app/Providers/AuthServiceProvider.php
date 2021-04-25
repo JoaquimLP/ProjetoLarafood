@@ -29,9 +29,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         if($this->app->runningInConsole())
-            return;
+        return;
         $permissions = Permissao::all();
-
         foreach ($permissions as $permission) {
             Gate::define($permission->nome, function (User $user) use ($permission) {
                 return $user->hsPermissions($permission->nome);
