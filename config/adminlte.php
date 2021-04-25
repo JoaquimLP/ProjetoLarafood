@@ -232,9 +232,9 @@ return [
 
     'menu' => [
         [
-            'text' => 'Home',
+            'text' => 'Dashboard',
             'url'  => 'admin',
-            'icon' => 'fas fa-home'
+            'icon' => 'fas fa-tachometer-alt'
         ],
         [
             'text' => 'Empresas',
@@ -273,21 +273,21 @@ return [
             'can' => 'Usuário'
         ],
         [
-            'text' => 'Categoria',
+            'text' => 'Categorias',
             'url'  => 'admin/categoria',
             'icon' => 'fas fa-layer-group',
             'can' => 'Categoria'
         ],
         [
-            'text' => 'Produto',
+            'text' => 'Produtos',
             'url'  => 'admin/produto',
-            'icon' => 'fas fa-cubes',
+            'icon' => 'fas fa-hamburger',
             'can' => 'Produtos'
         ],
         [
             'text' => 'Mesas',
             'url'  => 'admin/mesa',
-            'icon' => 'fas fa-table',
+            'icon' => 'fas fa-tablet',
             'can' => 'Mesas'
         ],
     ],

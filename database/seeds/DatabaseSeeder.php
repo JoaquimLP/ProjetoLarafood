@@ -1,5 +1,6 @@
 <?php
 
+use Database\Seeders\PermissaoSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,9 +12,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([PlanosSeeder::class,
+        $this->call([
+                PlanosSeeder::class,
                 EmpresasSeeder::class,
-                UsersTableSeeder::class
-                ]);
+                UsersTableSeeder::class,
+                PermissaoSeeder::class
+            ]);
     }
 }

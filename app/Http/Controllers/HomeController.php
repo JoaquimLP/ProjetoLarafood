@@ -2,6 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\{
+    Categoria,
+    Empresa,
+    Mesa,
+    Order,
+    Perfil,
+    Permissao,
+    Plano,
+    Produto,
+    Role,
+    User
+};
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +35,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $empresa = auth()->user()->empresa;
+
+        $totUsers = User::where('empresa_id', $empresa->id)->count();
+        $totMesa = Mesa::count();
+        $totCategoria = Categoria::count();
+        $totProduto = Produto::count();
+        $totEmpresa = Empresa::count();
+        $totPlano = Plano::count();
+        $totRole = Role::count();
+        $totPerfis = Perfil::count();
+        $totPermissao = Permissao::count();
+        $totPedido = Order::count();
+        //$users = User::where('empresa_id', $empresa->id)->count();
+        return view('home', compact(
+            'totUsers', 'totMesa', 'totCategoria', 'totProduto', 'totEmpresa', 'totPlano', 'totRole',
+            'totPerfis', 'totPermissao', 'totPedido'
+        ));
     }
 }
