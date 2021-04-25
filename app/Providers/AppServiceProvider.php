@@ -16,6 +16,7 @@ use App\Observers\ClienteObserver;
 use App\Observers\MesaObserver;
 use App\Observers\ProdutoObserve;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -36,12 +37,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
         Plano::observe(PlanoObserver::class);
         Empresa::observe(EmpresaObserver::class);
         Categoria::observe(CategoriaObserver::class);
         Produto::observe(ProdutoObserve::class);
         Mesa::observe(MesaObserver::class);
         Cliente::observe(ClienteObserver::class);
+
 
         /**
          * Customizar os If do blade

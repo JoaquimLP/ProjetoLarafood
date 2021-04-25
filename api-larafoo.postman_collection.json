@@ -1,0 +1,648 @@
+{
+	"info": {
+		"_postman_id": "f036c25c-c71c-4a67-be66-e39cc97d045e",
+		"name": "api-larafoo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "listar-empresa",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/empresa?per_page=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"empresa"
+					],
+					"query": [
+						{
+							"key": "per_page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consulta-empresa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/empresa/2fb4ac54-ec00-43f6-a182-750f2f741e3c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"empresa",
+						"2fb4ac54-ec00-43f6-a182-750f2f741e3c"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "2fb4ac54-ec00-43f6-a182-750f2f741e3c",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar-categoria",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/categoria/?token=a5d4ed0c-ae86-4212-9210-ae1722c4c59d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"categoria",
+						""
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "a5d4ed0c-ae86-4212-9210-ae1722c4c59d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar-categoria",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/categoria/82f189a5-2e9b-4b74-a7b9-d00b4d92311c?token=a5d4ed0c-ae86-4212-9210-ae1722c4c59d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"categoria",
+						"82f189a5-2e9b-4b74-a7b9-d00b4d92311c"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "a5d4ed0c-ae86-4212-9210-ae1722c4c59d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar-mesa",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/mesa/?token=a5d4ed0c-ae86-4212-9210-ae1722c4c59d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"mesa",
+						""
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "a5d4ed0c-ae86-4212-9210-ae1722c4c59d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar-mesa",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/mesa/a54f802b-7a49-43cd-8ca4-607bae55b0c4?token=a5d4ed0c-ae86-4212-9210-ae1722c4c59d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"mesa",
+						"a54f802b-7a49-43cd-8ca4-607bae55b0c4"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "a5d4ed0c-ae86-4212-9210-ae1722c4c59d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar-produto",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/produto/?token=a5d4ed0c-ae86-4212-9210-ae1722c4c59d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"produto",
+						""
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "a5d4ed0c-ae86-4212-9210-ae1722c4c59d"
+						},
+						{
+							"key": "categoria[0]",
+							"value": "lanche",
+							"disabled": true
+						},
+						{
+							"key": "categoria[1]",
+							"value": "massas",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar-produto",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/produto/82d1b134-79ba-4f95-93b5-419c38c89761?token=a5d4ed0c-ae86-4212-9210-ae1722c4c59d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"produto",
+						"82d1b134-79ba-4f95-93b5-419c38c89761"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "a5d4ed0c-ae86-4212-9210-ae1722c4c59d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cadastrar-cliente",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Carlos Faria\",\r\n    \"email\": \"carlosfarias@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/cliente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"cliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gerar-token-cliente",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"carlosfarias@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"device_name\": \"Desktop\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/sanctum/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"sanctum",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth-cliente",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|La11x8TaLcFV8XSwRCSTk2cSc1otTpuarqJk0Mhi",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/auth/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout-cliente",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|AfbBRkmJqxXwmjbXKFvB4ytFVoyUBfWP5LqxPxsT",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-pedido",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|AfbBRkmJqxXwmjbXKFvB4ytFVoyUBfWP5LqxPxsT",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comentario\": \"sem cebola 3\",\r\n    \"mesa\": \"a54f802b-7a49-43cd-8ca4-607bae55b0c4\",\r\n    \"produto\":[\r\n        {\r\n            \"identify\": \"6259623f-22a2-4b78-955e-48c9f94b8fd6\",\r\n            \"qtd\": 2\r\n        },\r\n        {\r\n            \"identify\": \"82d1b134-79ba-4f95-93b5-419c38c89761\",\r\n            \"qtd\": 8\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/orders/?token=a5d4ed0c-ae86-4212-9210-ae1722c4c59d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						""
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "a5d4ed0c-ae86-4212-9210-ae1722c4c59d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-pedido-auth",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 1|4pHntl0guj6UZwJdAxzx5l9fTga3N7V2YWwFhJEu",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comentario\": \"sem cebola 3\",\r\n    \"mesa\": \"a54f802b-7a49-43cd-8ca4-607bae55b0c4\",\r\n    \"produto\":[\r\n        {\r\n            \"identify\": \"6259623f-22a2-4b78-955e-48c9f94b8fd6\",\r\n            \"qtd\": 2\r\n        },\r\n        {\r\n            \"identify\": \"82d1b134-79ba-4f95-93b5-419c38c89761\",\r\n            \"qtd\": 5\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/auth/orders/?token=a5d4ed0c-ae86-4212-9210-ae1722c4c59d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"orders",
+						""
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "a5d4ed0c-ae86-4212-9210-ae1722c4c59d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar-pedido",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|AfbBRkmJqxXwmjbXKFvB4ytFVoyUBfWP5LqxPxsT",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/orders/ms58bpgt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"orders",
+						"ms58bpgt"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "a5d4ed0c-ae86-4212-9210-ae1722c4c59d",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar-historico-pedido",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|La11x8TaLcFV8XSwRCSTk2cSc1otTpuarqJk0Mhi",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/auth/orders/my-orders/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"orders",
+						"my-orders",
+						""
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "a5d4ed0c-ae86-4212-9210-ae1722c4c59d",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "avaliar-pedido-auth",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|La11x8TaLcFV8XSwRCSTk2cSc1otTpuarqJk0Mhi",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comentario\": \"perfeito\",\r\n    \"stars\": \"5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/auth/kqahtco0/avaliacao",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"kqahtco0",
+						"avaliacao"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

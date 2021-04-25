@@ -18,5 +18,19 @@ class PlanosSeeder extends Seeder
             'preco' => 499.99,
             'descricao' => "Plano empresarial",
         ]);
+
+        Plano::create([
+            'nome' => "Premium",
+            'url' => "businers",
+            'preco' => 199.99,
+            'descricao' => "Plano empresarial",
+        ]);
+
+        Plano::create([
+            'nome' => "Free",
+            'url' => "businers",
+            'preco' => 0.00,
+            'descricao' => "Plano empresarial",
+        ]);
     }
 }

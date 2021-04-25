@@ -14,10 +14,10 @@ class PermissaoSeeder extends Seeder
      */
     public function run()
     {
-        /* Permissao::create([
+        Permissao::create([
             'nome' => "Empresas",
             'descricao' => "permissão acesso view Empresas",
-            ]); */
+            ]);
         Permissao::create([
             'nome' => "Planos",
             'descricao' => "permissão acesso view Planos",
