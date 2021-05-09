@@ -24,7 +24,7 @@ class OrderResouce extends JsonResource
             'mesa' => $this->mesa_id ? new MesaResource($this->mesa) : "",
             'produtos' => ProdutoResource::collection($this->produtos),
             'date' => Carbon::parse($this->created_at)->format('Y-m-d'),
-            //'avaliacao' => AvaliacaoResource::collection($this->avaliacao),
+            'avaliacao' => AvaliacaoResource::collection($this->avaliacao),
         ];
     }
 }
