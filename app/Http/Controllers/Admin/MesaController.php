@@ -152,7 +152,7 @@ class MesaController extends Controller
         if(!$mesa){
             return redirect()->back();
         }
-        $uri = env('URI_CLIENT') . "/{$empresa->uuid}/{$mesa->uuid}";
+        $uri ="http://localhost:8081/{$empresa->uuid}/{$mesa->uuid}";
         return view('admin.mesa.qrcode', compact('uri'));
     }
 }
