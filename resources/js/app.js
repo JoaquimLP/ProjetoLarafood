@@ -6,8 +6,6 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -26,6 +24,12 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+import VueToastify from "vue-toastify";
+import Vue from 'vue/dist/vue.js';
+
+Vue.use(VueToastify);
+Vue.component('orders-empresa', require('./components/Orders/OrdersEmpresa.vue').default);
 
 const app = new Vue({
     el: '#app',

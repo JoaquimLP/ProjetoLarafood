@@ -67,10 +67,10 @@
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
-    <div>
-        {{-- Body Content --}}
-        @yield('body')
-    </div>
+
+    {{-- Body Content --}}
+    @yield('body')
+
     {{-- Base Scripts --}}
     @if(!config('adminlte.enabled_laravel_mix'))
         <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
@@ -90,6 +90,12 @@
     @yield('adminlte_js')
 
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <script>
+        window.Laravel = {!! json_encode([
+            'empresa_id' => auth()->check() ? auth()->user()->empresa_id : ''
+        ]) !!}
+    </script>
 
 </body>
 @stack('scripts')

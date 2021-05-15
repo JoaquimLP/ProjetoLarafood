@@ -133,7 +133,7 @@ Route::prefix('admin')
     Route::any('/role/search', 'Acl\RoleController@search')->name('role.search');
     Route::resource('/role', 'Acl\RoleController');
 
-    Route::get('/pedido', 'OrderController@index')->name('pedido');
+    Route::get('/pedido', 'OrderController@index')->name('orders.index');
 
     //Rotas de permissão e role
     Route::get('role/{id}/permissao', 'Acl\PermissaoRoleController@listaPermissao')->name('role.permissao');
