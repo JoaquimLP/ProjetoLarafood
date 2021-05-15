@@ -290,6 +290,12 @@ return [
             'icon' => 'fas fa-tablet',
             'can' => 'Mesas'
         ],
+        [
+            'text' => 'Pedidos',
+            'url'  => 'admin/pedido',
+            'icon' => 'fas fa-utensils',
+            'can' => 'Pedidos'
+        ],
     ],
 
     /*

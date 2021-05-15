@@ -50,5 +50,9 @@ class PermissaoSeeder extends Seeder
             'nome' => "Mesas",
             'descricao' => "permissão acesso view Mesas",
             ]);
+        Permissao::create([
+            'nome' => "Pedidos",
+            'descricao' => "permissão acesso view Pedidos",
+            ]);
     }
 }

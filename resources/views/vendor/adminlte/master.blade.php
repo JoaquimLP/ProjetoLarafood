@@ -67,10 +67,10 @@
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
-
-    {{-- Body Content --}}
-    @yield('body')
-
+    <div>
+        {{-- Body Content --}}
+        @yield('body')
+    </div>
     {{-- Base Scripts --}}
     @if(!config('adminlte.enabled_laravel_mix'))
         <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
@@ -88,6 +88,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
+
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
 </body>
 @stack('scripts')

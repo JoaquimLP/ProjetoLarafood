@@ -133,6 +133,8 @@ Route::prefix('admin')
     Route::any('/role/search', 'Acl\RoleController@search')->name('role.search');
     Route::resource('/role', 'Acl\RoleController');
 
+    Route::get('/pedido', 'OrderController@index')->name('pedido');
+
     //Rotas de permissão e role
     Route::get('role/{id}/permissao', 'Acl\PermissaoRoleController@listaPermissao')->name('role.permissao');
     Route::get('role/{id}/permissao/create_permissao', 'Acl\PermissaoRoleController@createPermissao')->name('role.permissao.createPermissao');
@@ -146,7 +148,5 @@ Route::prefix('admin')
     Route::post('user/{id}/role/store_role', 'Acl\UserRoleController@storeUser')->name('user.role.store');
     Route::any('user/{id}/role/search_role', 'Acl\UserRoleController@searchUser')->name('user.role.search');
     Route::get('user/{id}/role/{idUser}/detach_role', 'Acl\UserRoleController@detachUser')->name('user.role.detach');
+
 });
-
-
-

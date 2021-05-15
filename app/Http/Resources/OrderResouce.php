@@ -18,7 +18,7 @@ class OrderResouce extends JsonResource
         return [
             'identify' => $this->identify,
             'total' => $this->total,
-            'status' => $this->status,
+            'status' => $this->statusOptions[$this->status],
             'empresa' => new EmpresaResource($this->empresa),
             'cliente' => $this->cliente_id ? new ClienteResource($this->cliente) : "",
             'mesa' => $this->mesa_id ? new MesaResource($this->mesa) : "",

@@ -15,6 +15,18 @@ class Order extends Model
         'empresa_id', 'uuid', 'identify', 'cliente_id', 'mesa_id', 'total', 'status', 'comentario',
     ];
 
+    /**
+     * Options status
+     */
+    public $statusOptions = [
+        'open' => 'Aberto',
+        'done' => 'Completo',
+        'rejected' => 'Rejeitado',
+        'working' => 'Andamento',
+        'canceled' => 'Cancelado',
+        'delivering' => 'Em transito',
+    ];
+
     public function empresa(){
         // dd($this->hasOne(Empresa::class,  'empresa_id'));
          return $this->belongsTo(Empresa::class);

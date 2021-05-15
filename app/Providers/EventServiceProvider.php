@@ -2,8 +2,20 @@
 
 namespace App\Providers;
 
-use App\Events\EmpresaCreated;
-use App\Listeners\AddRoleEmpresa;
+use App\Events\{
+    EmpresaCreated,
+    OrderCreated
+};
+use App\Listeners\{
+    AddRoleEmpresa,
+    NotifyUsersNewOrderCreated
+};
+use App\Models\{
+    Order
+};
+use App\Observers\{
+    OrderObserver
+};
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -22,7 +34,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         EmpresaCreated::class => [
             AddRoleEmpresa::class,
-        ]
+        ],
+        OrderCreated::class => [
+            NotifyUsersNewOrderCreated::class,
+        ],
     ];
 
     /**
@@ -34,6 +49,6 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+        Order::observe(OrderObserver::class);
     }
 }
