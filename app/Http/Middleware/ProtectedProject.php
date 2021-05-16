@@ -16,7 +16,10 @@ class ProtectedProject
      */
     public function handle(Request $request, Closure $next)
     {
+        if(app()->runningInConsole()){
+            return $next($request);
+        }
+
         return redirect()->away('http://localhost');
-        return $next($request);
     }
 }

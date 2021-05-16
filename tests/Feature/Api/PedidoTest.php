@@ -21,8 +21,8 @@ class PedidoTest extends TestCase
      */
     public function test_erro_orders()
     {
-        $response = $this->postJson('/api/v1/orders');
-        //$response->dump();
+        $response = $this->postJson('/api/v1/create-orders');
+        $response->dump();
         $response->assertStatus(422)
                 ->assertJsonPath('errors.token', [trans('validation.required', ['attribute' => 'token'])])
                 ->assertJsonPath('errors.produto', [trans('validation.required', ['attribute' => 'produto'])]);
@@ -53,7 +53,7 @@ class PedidoTest extends TestCase
                 ]);
        }
 
-        $response = $this->postJson("/api/v1/orders/", $paylod);
+        $response = $this->postJson("/api/v1/create-orders", $paylod);
         //$response->dump();
         $response->assertStatus(201);
     }
@@ -83,7 +83,7 @@ class PedidoTest extends TestCase
                 ]);
        }
 
-        $response = $this->postJson("/api/v1/orders/", $paylod);
+        $response = $this->postJson("/api/v1/create-orders", $paylod);
         //$response->dump();
         $response->assertStatus(201)
             ->assertJsonPath('data.total', 25.8);
@@ -146,7 +146,7 @@ class PedidoTest extends TestCase
         $token = $cliente->createToken(Str::random(10))->plainTextToken;
 
 
-        $response = $this->postJson("/api/v1/auth/orders", $paylod, [
+        $response = $this->postJson("/api/v1/auth/create-orders", $paylod, [
             'Authorization' => 'Bearer '.$token
         ]);
         //$response->dump();
@@ -180,7 +180,7 @@ class PedidoTest extends TestCase
                 ]);
         }
 
-        $response = $this->postJson("/api/v1/orders", $paylod);
+        $response = $this->postJson("/api/v1/create-orders", $paylod);
         //$response->dump();
         $response->assertStatus(201);
     }
