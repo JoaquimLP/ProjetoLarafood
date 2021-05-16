@@ -20,12 +20,12 @@ class OrderResouce extends JsonResource
             'total' => $this->total,
             'status' => $this->status,
             'status_label' => $this->statusOptions[$this->status],
-            'empresa' => new EmpresaResource($this->empresa),
+            'empresa' => $this->empresa ? new EmpresaResource($this->empresa) : "",
             'cliente' => $this->cliente_id ? new ClienteResource($this->cliente) : "",
             'mesa' => $this->mesa_id ? new MesaResource($this->mesa) : "",
             'produtos' => ProdutoResource::collection($this->produtos),
             'date' => Carbon::parse($this->created_at)->format('Y-m-d'),
-            'avaliacao' => AvaliacaoResource::collection($this->avaliacao),
+            'avaliacao' => $this->avaliacao ? AvaliacaoResource::collection($this->avaliacao) : "",
         ];
     }
 }

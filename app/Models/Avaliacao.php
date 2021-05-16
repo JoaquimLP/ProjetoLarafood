@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Avaliacao extends Model
 {
-    use HasFactory, EmpresaTraits;
+    use HasFactory;
 
     protected $fillable = ['order_id', 'cliente_id', 'stars', 'comentario'];
 

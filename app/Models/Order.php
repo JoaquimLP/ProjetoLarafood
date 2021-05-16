@@ -28,8 +28,7 @@ class Order extends Model
     ];
 
     public function empresa(){
-        // dd($this->hasOne(Empresa::class,  'empresa_id'));
-         return $this->belongsTo(Empresa::class);
+        return $this->belongsTo(Empresa::class);
     }
 
     public function cliente(){
@@ -48,6 +47,6 @@ class Order extends Model
 
     public function avaliacao()
     {
-        return $this->hasMany(Avaliacao::class);
+        return $this->hasMany(Avaliacao::class, 'order_id', 'id');
     }
 }

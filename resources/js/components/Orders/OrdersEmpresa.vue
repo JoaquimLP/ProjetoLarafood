@@ -100,7 +100,7 @@ export default {
                 date: this.dateFilter
             }})
                 .then(response => this.orders = response.data)
-                .catch(error => alert('error'))
+                .catch(error =>  this.$vToastify.error(`Falha ao carregar os pedidos`, 'ERROS!!!'))
                 .finally(() => this.loadingOrders = false)
         },
         reset () {

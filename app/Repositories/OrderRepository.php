@@ -65,7 +65,7 @@ class OrderRepository implements OrderRepositoryInterface
     public function getOrderByEmpresa($empresa_id, $status = null, $date = null)
     {
         $orders = $this->entity
-            ->where('empresa_id', $empresa_id)
+        ->where('empresa_id', $empresa_id)
             ->where(function ($query) use ($status) {
                 if ($status != 'all') {
                     return $query->where('status', $status);

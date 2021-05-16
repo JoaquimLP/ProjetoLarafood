@@ -22,7 +22,6 @@ class OrderController extends Controller
         $date = $request->date ?? date('Y-m-d');
         $status = $request->status ?? 'all';
         $orders = $this->orderService->getOrderByEmpresa($empresa->id, $status, $date);
-
         return OrderResouce::collection($orders);
     }
 
