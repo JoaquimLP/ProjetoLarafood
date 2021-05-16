@@ -3,7 +3,7 @@
 @section('title', 'categorias')
 
 @section('content_header')
-    <h1>Categorias <a href="{{route('categoria.create')}}" class="btn btn-primary float-right"><i class="fas fa-plus-square"></i> ADICIONAR</a></h1>
+    <h1 class="text-light">Categorias <a href="{{route('categoria.create')}}" class="btn btn-primary float-right"><i class="fas fa-plus-square"></i> ADICIONAR</a></h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <a href="{{route('admin.home')}}">Home</a>

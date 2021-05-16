@@ -3,7 +3,7 @@
 @section('title', 'Planos')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1 class="text-light">Dashboard</h1>
 @stop
 
 @section('content')
