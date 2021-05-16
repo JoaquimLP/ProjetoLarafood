@@ -1,3 +1,3 @@
-//import Vue from 'vue/dist/vue.js';
+import Vue from 'vue';
 
-//export default new Vue()
+export default new Vue()

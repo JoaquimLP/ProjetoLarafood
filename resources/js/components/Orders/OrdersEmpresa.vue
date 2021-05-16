@@ -32,7 +32,7 @@
                     <tr v-for="(order, index) in orders.data" :key="index">
                         <td>{{ order.identify }}</td>
                         <td>{{ order.status_label }}</td>
-                        <td>{{ order.date_br }}</td>
+                        <td>{{ formartDate(order.date) }}</td>
                         <td>
                             <!-- <detail-order :order="order" :display="'none'"></detail-order> -->
                             <a href="#" @click.prevent="openDetails(order)" class="btn btn-info">Detalhes</a>
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import Bus from '../../bus'
+import Bus from '../../Bus'
 import DetailOrder from './_partials/DetailOrder'
 export default {
     mounted() {
@@ -73,20 +73,20 @@ export default {
                 status: "",
                 status_label: "",
                 date: "",
-                date_br: "",
-                company: {
-                    name: "",
+                date: "",
+                empresa: {
+                    nome: "",
                     image: "",
                     uuid: "",
                     contact: "",
                 },
-                client: {
-                    name: "",
+                cliente: {
+                    nome: "",
                     email: ""
                 },
-                table: "",
-                products: [],
-                evaluations: []
+                mesa: "",
+                produtos: [],
+                avaliacao: []
             },
             displayOrder: 'none',
         }
@@ -111,6 +111,7 @@ export default {
             this.getOrders()
         },
         openDetails(order) {
+            console.log(order);
             this.order = order;
             this.displayOrder = 'block'
         },
@@ -121,23 +122,34 @@ export default {
                 status: "",
                 status_label: "",
                 date: "",
-                date_br: "",
-                company: {
+                date: "",
+                empresa: {
                     name: "",
                     image: "",
                     uuid: "",
                     contact: "",
                 },
-                client: {
-                    name: "",
+                cliente: {
+                    nome: "",
                     email: ""
                 },
-                table: "",
-                products: [],
-                evaluations: []
+                mesa: "",
+                produtos: [],
+                avaliacao: []
             },
             this.displayOrder = 'none'
         },
+
+        formartDate(value){
+            let date = new Date(value),
+            day = (date.getDate() + 1).toString(),
+            dayF = (day.length == 1) ? '0' + day : day,
+            month = (date.getMonth() + 1).toString(),
+            monthF = (day.length == 1) ? '0' + month : month,
+            yearF = date.getFullYear()
+
+            return dayF + "/" + monthF + "/" + yearF
+        }
     },
     watch: {
         status () {

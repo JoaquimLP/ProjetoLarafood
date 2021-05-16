@@ -28,31 +28,29 @@
                         <li>Total: R$ {{ total }}</li>
                         <li>Status: {{ order.status_label }}</li>
                         <li>Data: {{ order.date_br }}</li>
-                        <li>
+                         <li>
                             Cliente:
-                            <ul>
-                                <li>Nome: {{ order.client.name }}</li>
-                                <!-- <li>image: {{ order.image }}</li> -->
-                                <!-- <li>uuid: {{ order.uuid }}</li> -->
-                                <li>Contato: {{ order.client.contact }}</li>
-                            </ul>
+                           <!--  <ul>
+                                <li>Nome: {{ order.cliente.nome}}</li>
+                                <li>Contato: {{ order.cliente.email }}</li>
+                            </ul> -->
                         </li>
-                        <li>Mesa: {{ order.table.name }}</li>
+                        <li>Mesa: {{ order.mesa.nome }}</li>
                         <li>
                             Produtos:
                             <ul>
-                                <li v-for="(product, index) in order.products" :key="index">
-                                    <img :src="product.image" :alt="product.title" style="max-width: 100px;">
-                                    {{ product.title }}
+                                <li v-for="(produto, index) in order.produtos" :key="index">
+                                    <img :src="produto.image" :alt="produto.produto" style="max-width: 100px;">
+                                    {{ produto.produto }}
                                 </li>
                             </ul>
                         </li>
                         <li>
                             Avaliações:
                             <ul>
-                                <li v-for="(evaluation, index) in order.evaluations" :key="index">
-                                    Nota: {{ evaluation.stars }}/4
-                                    <br>Comentário: {{ evaluation.comment }}
+                                <li v-for="(avaliacao, index) in order.avaliacao" :key="index">
+                                    Nota: {{ avaliacao.stars }}/4
+                                    <br>Comentário: {{ avaliacao.comentario }}
                                 </li>
                             </ul>
                         </li>
@@ -82,7 +80,7 @@ export default {
     data() {
         return {
             status: '',
-            loading: false
+            loading: false,
         }
     },
     methods: {
@@ -91,13 +89,19 @@ export default {
         },
         updateStatus() {
             this.loading = true
-
-            axios.patch('/api/v1/my-orders', {
+            const params = {
                 status: this.status,
                 identify: this.order.identify
+            }
+
+            axios.patch('/api/v1/my-orders', params)
+            .then(response => {
+                this.$emit('statusUpdated')
             })
-            .then(response => this.$emit('statusUpdated'))
-            .catch(error => alert('error'))
+            .catch(error =>{
+                console.log(error.response);
+                this.$emit('closeDetails')
+            })
             .finally(() => this.loading = false)
         }
     },

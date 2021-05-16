@@ -62,6 +62,33 @@ class OrderRepository implements OrderRepositoryInterface
         return DB::table('orders_produto')->insert($orderProduto); */
     }
 
+    public function getOrderByEmpresa($empresa_id, $status = null, $date = null)
+    {
+        $orders = $this->entity
+            ->where('empresa_id', $empresa_id)
+            ->where(function ($query) use ($status) {
+                if ($status != 'all') {
+                    return $query->where('status', $status);
+                }
+            })
+            ->where(function ($query) use ($date) {
+                if ($date) {
+                    return $query->whereDate('created_at', $date);
+                }
+            })
+            ->get();
+
+        return $orders;
+
+    }
+
+    public function updateStatusOrder($identify, $status)
+    {
+        $this->entity->where('identify', $identify)->update(['status' => $status]);
+
+        return $this->entity->where('identify', $identify)->first();
+    }
+
     public function orderByCliente($cliente_id)
     {
         $cliente = $this->entity->where("cliente_id", $cliente_id)->paginate();

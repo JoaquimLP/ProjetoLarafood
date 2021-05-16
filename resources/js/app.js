@@ -26,7 +26,7 @@ require('./bootstrap');
  */
 
 import VueToastify from "vue-toastify";
-import Vue from 'vue/dist/vue.js';
+import Vue from 'vue';
 
 Vue.use(VueToastify);
 Vue.component('orders-empresa', require('./components/Orders/OrdersEmpresa.vue').default);

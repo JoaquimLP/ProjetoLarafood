@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Bus from './bus'
+import VueToastify from "vue-toastify";
+Vue.use(VueToastify);
 
 // get id tenant
 const empresa_id = window.Laravel.empresa_id;

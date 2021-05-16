@@ -88,6 +88,16 @@ class OrderServices
 
     }
 
+    public function getOrderByEmpresa($empresa_id, $status = null, $date = null)
+    {
+        return $this->order->getOrderByEmpresa($empresa_id, $status, $date);
+    }
+
+    public function updateStatusOrder($identify, $status)
+    {
+        return $this->order->updateStatusOrder($identify, $status);
+    }
+
     private function getEmpresa($uuid)
     {
         $empresa = $this->empresa->getEmpresaByUuid($uuid);
