@@ -1983,7 +1983,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }).then(function (response) {
         return _this2.orders = response.data;
       })["catch"](function (error) {
-        return alert('error');
+        return _this2.$vToastify.error("Falha ao carregar os pedidos", 'ERROS!!!');
       })["finally"](function () {
         return _this2.loadingOrders = false;
       });
@@ -2158,8 +2158,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.patch('/api/v1/my-orders', params).then(function (response) {
         _this.$emit('statusUpdated');
       })["catch"](function (error) {
-        console.log(error.response);
-
         _this.$emit('closeDetails');
       })["finally"](function () {
         return _this.loading = false;
@@ -2211,7 +2209,6 @@ vue__WEBPACK_IMPORTED_MODULE_2__.default.use((vue_toastify__WEBPACK_IMPORTED_MOD
 
 var empresa_id = window.Laravel.empresa_id;
 window.Echo.channel("laravel_database_private-order-created.".concat(empresa_id)).listen('OrderCreated', function (e) {
-  console.log(e.order);
   _bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('order.created', e.order);
   vue__WEBPACK_IMPORTED_MODULE_2__.default.$vToastify.success("Novo pedido ".concat(e.order.identify), 'Novo Pedido');
 });
