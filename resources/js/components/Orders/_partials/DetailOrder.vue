@@ -30,10 +30,10 @@
                         <li>Data: {{ order.date_br }}</li>
                          <li>
                             Cliente:
-                           <!--  <ul>
-                                <li>Nome: {{ order.cliente.nome}}</li>
+                            <ul>
+                                <li>Nome: {{ order.cliente.name}}</li>
                                 <li>Contato: {{ order.cliente.email }}</li>
-                            </ul> -->
+                            </ul>
                         </li>
                         <li>Mesa: {{ order.mesa.nome }}</li>
                         <li>
@@ -99,7 +99,6 @@ export default {
                 this.$emit('statusUpdated')
             })
             .catch(error =>{
-                console.log(error.response);
                 this.$emit('closeDetails')
             })
             .finally(() => this.loading = false)

@@ -1958,12 +1958,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         status_label: "",
         date: ""
       }, _defineProperty(_order, "date", ""), _defineProperty(_order, "empresa", {
-        nome: "",
+        name: "",
         image: "",
         uuid: "",
         contact: ""
       }), _defineProperty(_order, "cliente", {
-        nome: "",
+        name: "",
         email: ""
       }), _defineProperty(_order, "mesa", ""), _defineProperty(_order, "produtos", []), _defineProperty(_order, "avaliacao", []), _order),
       displayOrder: 'none'
@@ -2017,7 +2017,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         uuid: "",
         contact: ""
       }), _defineProperty(_this$order, "cliente", {
-        nome: "",
+        name: "",
         email: ""
       }), _defineProperty(_this$order, "mesa", ""), _defineProperty(_this$order, "produtos", []), _defineProperty(_this$order, "avaliacao", []), _this$order), this.displayOrder = 'none';
     },
@@ -45929,8 +45929,15 @@ var render = function() {
               _vm._v(" "),
               _c("li", [
                 _vm._v(
-                  "\n                        Cliente:\n                       "
-                )
+                  "\n                        Cliente:\n                        "
+                ),
+                _c("ul", [
+                  _c("li", [_vm._v("Nome: " + _vm._s(_vm.order.cliente.name))]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _vm._v("Contato: " + _vm._s(_vm.order.cliente.email))
+                  ])
+                ])
               ]),
               _vm._v(" "),
               _c("li", [_vm._v("Mesa: " + _vm._s(_vm.order.mesa.nome))]),

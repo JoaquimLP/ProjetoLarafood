@@ -75,13 +75,13 @@ export default {
                 date: "",
                 date: "",
                 empresa: {
-                    nome: "",
+                    name: "",
                     image: "",
                     uuid: "",
                     contact: "",
                 },
                 cliente: {
-                    nome: "",
+                    name: "",
                     email: ""
                 },
                 mesa: "",
@@ -130,7 +130,7 @@ export default {
                     contact: "",
                 },
                 cliente: {
-                    nome: "",
+                    name: "",
                     email: ""
                 },
                 mesa: "",
