@@ -63,7 +63,7 @@
     @endif
 
     <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
-
+    @stack('script')
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
@@ -88,15 +88,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
-
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <script>
-        window.Laravel = {!! json_encode([
-            'empresa_id' => auth()->check() ? auth()->user()->empresa_id : ''
-        ]) !!}
-    </script>
-
 </body>
 @stack('scripts')
 </html>

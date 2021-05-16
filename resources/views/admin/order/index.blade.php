@@ -16,3 +16,15 @@
         <orders-empresa></orders-empresa>
     </div>
 @stop
+
+@section('adminlte_js')
+<script src="{{ asset('js/app.js') }}"></script>
+@stop
+
+@push('script')
+    <script>
+        window.Laravel = {!! json_encode([
+            'empresa_id' => auth()->check() ? auth()->user()->empresa_id : ''
+        ]) !!}
+    </script>
+@endpush

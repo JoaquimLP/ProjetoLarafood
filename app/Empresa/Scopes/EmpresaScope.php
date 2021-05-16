@@ -21,6 +21,6 @@ class EmpresaScope implements Scope
         $empresa = app(ManagerEmpresa::class)->getEmpresaIdentify();
 
         if($empresa)
-            $builder->where('empresa_id', );
+            $builder->where('empresa_id', $empresa);
     }
 }

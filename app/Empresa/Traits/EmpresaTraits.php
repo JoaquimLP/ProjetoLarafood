@@ -17,10 +17,7 @@ trait EmpresaTraits
     protected static function booted()
     {
         parent::boot();
-       $static = static::observe(EmpresaObserver::class);
-
-       if ($static != null) {
-            $static = static::addGlobalScope(new EmpresaScope);
-       }
+        static::observe(EmpresaObserver::class);
+        static::addGlobalScope(new EmpresaScope);
     }
 }
